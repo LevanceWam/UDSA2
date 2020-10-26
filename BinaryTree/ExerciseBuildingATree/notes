@@ -50,3 +50,17 @@ else it needs to be in the right sub tree
 now if the value of either the right or left is null
 if it is null then the this node is the parent of the new node we want to insert 
 we want to break out of this node if it is true 
+
+find method 
+This is a little bit similar to the insert method we need to 
+traverse the list in order to find the value 
+
+so we see the root to a variable of current 
+then we make a while statement 
+while current is not equal to null then we will continue to move through the list 
+next inside of the while loop 
+if the value we are searching for is less than the current then we need to 
+search on the left side of the tree so we set the current to the next node on the left 
+and if value is greater we go to the right 
+
+else we return true

@@ -37,6 +37,16 @@ class Tree {
              }
          }
      }
+
+     find(value){
+         let current = this.root;
+
+         while(current != null){
+             if(value < current.value) current = current.leftChild;
+             else if (value > current.value) current = current.rightChild;
+             else return true;   
+         }
+     }
 }
 
 const tree = new Tree();
@@ -49,4 +59,4 @@ tree.insert(6);
 tree.insert(8);
 tree.insert(10);
 
-console.log(tree.root)
+console.log(tree.find(1))
