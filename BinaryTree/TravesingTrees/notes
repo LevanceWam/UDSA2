@@ -82,3 +82,14 @@ Post-Order traversal:
 this one is similar to in-order
 we start at the root and before we visit or print the node 
 we have to visit its left and right subtree so we go 1 to 6 to 4
+then we go to the root but we can not visit it yet we have to visit its right subtree 
+so we go 8 10 9 and now we have visited both the left and the right sub trees of our root node 
+so now it is finally time to visit the main root 
+so the numbers are printed in this order 1 6 4 8 10 9 7 
+
+here is the interesting thing about post order traversals
+if we pay close attention we will notice that were going to traverse the tree from the
+it's leaves all the way up to its root 
+this is really useful in solving tree problems in a lot of cases we should start by visiting the leaf nodes first
+
+Now the way we are going to accomplish this is to use recurrison!
