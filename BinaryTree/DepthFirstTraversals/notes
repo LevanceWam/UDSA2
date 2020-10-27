@@ -1,0 +1,27 @@
+This is the notes for DepthFirstTraversals
+
+We are going to learn how to implement tree traversal algorithms 
+using recursion
+
+we are going to do the preOrder traversal on the example tree
+(check for screenshot )
+
+Now here is something interesting the left and right nodes are subtrees
+so when we get to the leftnode we forget about all the other nodes in this 
+tree we imagine that this subtree is the only tree in the work that we want to 
+traverse once again we start at the root then go to the left then right 
+
+here we have a small subtree with only 3 nodes or two levels but this sub tree could be
+very large so when ever we go to the left we have to focus on that subtree
+so we are breaking down this large complex problem into smaller and easier to solve problems 
+
+this is where we are going to use recursion 
+we need to create a new method this method should have a parameter and that parameter should be the root of the 
+tree to traverse when we want to visit the left or right nodes we are going to
+recursively call that method 
+
+so in the tree class we are going to make a new method called traversePreOder
+this method takes a value parameter root
+
+in this method we need to visit the root and print the value on the console 
+then we are going to visit the left and right children
