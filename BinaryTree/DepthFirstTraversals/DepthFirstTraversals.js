@@ -93,4 +93,4 @@ tree.insert(6);
 tree.insert(8);
 tree.insert(10);
 
-tree.traversePostOrder();
+tree.traversePreOrder();

@@ -25,3 +25,16 @@ this method takes a value parameter root
 
 in this method we need to visit the root and print the value on the console 
 then we are going to visit the left and right children
+
+solution:
+all of these methods are similar so here is a quick rundown of what 
+we did
+
+in preorder all we did was print the root and moved on to the left subtree and printed its root 
+we went to the left again and printed that node then made our way to the right 
+after this subtree is done we went to the main root and repeated the same process for the right subtree
+
+Now for the other 2 traversals we simply needed to rearrange the order of the code in the method 
+so for preorder it was root, left, right
+inorder left, root, right 
+postorder left right root
