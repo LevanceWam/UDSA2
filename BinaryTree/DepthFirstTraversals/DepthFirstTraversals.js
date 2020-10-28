@@ -52,13 +52,35 @@ class Tree {
          this.privTraversePreOrder(this.root)
      }
 
+     traverseInOrder(){
+         this.privTraverseInOrder(this.root)
+     }
+     traversePostOrder(){
+         this.privTraversePostOrder(this.root)
+     }
+
      privTraversePreOrder(root){
         if (root == null ) return;
 
          console.log(root.value)
          this.privTraversePreOrder(root.leftChild);
          this.privTraversePreOrder(root.rightChild);
+     }
 
+     privTraverseInOrder(root){
+        if (root == null ) return;
+
+        this.privTraverseInOrder(root.leftChild);
+        console.log(root.value)
+        this.privTraverseInOrder(root.rightChild);
+     }
+
+     privTraversePostOrder(root){
+        if (root == null ) return;
+
+        this.privTraversePostOrder(root.leftChild);
+        this.privTraversePostOrder(root.rightChild);
+        console.log(root.value)
      }
 }   
 const tree = new Tree();
@@ -71,4 +93,4 @@ tree.insert(6);
 tree.insert(8);
 tree.insert(10);
 
-tree.traversePreOrder();
+tree.traversePostOrder();
