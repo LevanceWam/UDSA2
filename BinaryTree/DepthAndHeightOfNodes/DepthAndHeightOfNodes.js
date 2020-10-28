@@ -9,6 +9,7 @@ class Node{
 const PreOrderAlgorithm = Symbol();
 const InOrderAlgorithm = Symbol();
 const PostOrderAlgorithm = Symbol();
+const heightAlgorithm = Symbol();
 
 class Tree {
      constructor(root=null){
@@ -63,6 +64,11 @@ class Tree {
          this[PostOrderAlgorithm](this.root)
      }
 
+     height(){
+         if (this.root == null) return -1;
+         return this[heightAlgorithm](this.root);
+     }
+
      [PreOrderAlgorithm](root){
         if (root == null ) return;
 
@@ -86,6 +92,11 @@ class Tree {
         this[PostOrderAlgorithm](root.rightChild);
         console.log(root.value)
      }
+
+     [heightAlgorithm](root){
+         if (root.leftChild == null  && root.rightChild == null) return 0;
+         return 1 + Math.max(this[heightAlgorithm](root.leftChild), this[heightAlgorithm](root.rightChild))
+     }
 }   
 const tree = new Tree();
 
@@ -97,4 +108,4 @@ tree.insert(6);
 tree.insert(8);
 tree.insert(10);
 
-tree.traversePostOrder();
+console.log(tree.height())
