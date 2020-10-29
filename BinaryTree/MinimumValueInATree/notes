@@ -1,0 +1,23 @@
+This is the notes for MinimumValueInATree
+
+In this lecture we are going to find the minimum value in a binary tree
+we are going to use recursion in this lecture also 
+as we need to pratice taking big problems and breaking them down into 
+smaller easier problems 
+
+to find the minimum value from a tree we need to find the minimum
+value in the left and right subtree and then compare the 2 values 
+with the value of the root 
+
+when we look at the right subtree we see that it will be super easy to find the 
+minimum value because there are not that many nodes to deal with 
+
+for example looking at the right subtree we have to compare 4 to 30 
+4 is less than 30 so we get 4 back here
+
+Now what kind of traversal algorithm we use here to accomplish this?
+we used the PostOrder traversal we start at the leaf nodes up to the 
+root to find the minimum value
+
+so lets code this part out 
+we are going to start with a private method 
