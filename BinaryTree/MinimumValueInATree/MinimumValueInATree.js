@@ -62,6 +62,7 @@ class Tree {
      traverseInOrder(){
          this[InOrderAlgorithm](this.root);
      }
+
      traversePostOrder(){
          this[PostOrderAlgorithm](this.root);
      }
@@ -75,10 +76,11 @@ class Tree {
          return this[minimumAlgorithm](this.root);
      }
 
+     // O(log n)
      minBinSearch(){
          if (this.root == null) throw new Error('The tree is empty');
 
-         let current = root;
+         let current = this.root;
          let last = current ;
          while (current != null){
              last = current;
@@ -116,6 +118,7 @@ class Tree {
          return 1 + Math.max(this[heightAlgorithm](root.leftChild), this[heightAlgorithm](root.rightChild));
      }
 
+     // O(n)
      [minimumAlgorithm](root){
         if (this[isLeaf](root)) return root.value;
 
@@ -126,7 +129,7 @@ class Tree {
      }
 
      [isLeaf](node){
-         return (node.leftChild == null  && node.rightChild == null);
+         return (node.leftChild == null && node.rightChild == null);
      }
 }   
 const tree = new Tree();
@@ -137,6 +140,7 @@ tree.insert(9);
 tree.insert(1);
 tree.insert(6);
 tree.insert(8);
-// tree.insert(10);
+tree.insert(10);
 
 console.log(tree.min())
+console.log(tree.minBinSearch())

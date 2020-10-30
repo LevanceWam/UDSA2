@@ -1,4 +1,5 @@
 This is the notes for MinimumValueInATree
+this is a popular interview question 
 
 In this lecture we are going to find the minimum value in a binary tree
 we are going to use recursion in this lecture also 
@@ -21,3 +22,77 @@ root to find the minimum value
 
 so lets code this part out 
 we are going to start with a private method 
+and for this method we are going to give it the root node as a 
+agrument and here we should find the minimum value in the left subtree
+so we are going to call this method recursively and give it the leftchild of the root
+this will return the minimum in the left subtree so we are going to store it into a variable called left
+we are going to do the same for the right subtree 
+
+next we are going to want to compare the 2 values with the value of the root node and pick the minimum and return it
+
+so at the bottom we want to return Math.min note that this method takes 2 agruments but we have 
+3 values we want to compare so we have to call it twice 
+so in the first one we are going to call Math.min(left,right)
+then we are going to call the Math.min function and pass the first Math.min as a agrument 
+like this Math.min(Math.min(left,right), root.value) this is how we are going to find the minimum of 3 values 
+
+Now we need to write the base condition 
+the base condition here needs to be when we get to a leaf node if we get to the leaf node we need to return the value of that node 
+earlier we wrote logic for detecting a leaf node we don't want to repeat this so we are going to 
+make this into a private method and call it at the top of all the methods that need to use it 
+
+now all that is left for us to do is to make a public method that we need to 
+trigger the private method or recursion whatever you want to call it 
+
+Now if we look at the tree we took a screenshot of: 
+
+we can see that we have a binary tree but it is not a binary search tree.
+This is because in a binary search tree all the values in the left 
+subtree should be smaller than the root itself 
+but in this screenshot that is not the case also in the right subtree
+all the values that are supposed to be bigger than the main root should be here 
+
+in a binary search tree we have a simpler way to find 
+the minimum value. remember that all of the values on the left side of the root is the 
+smaller number so if we start from the main root 20 and go to the left 
+we get 10 and if we look to the other values to the left of 10 they are smaller than 
+the root itself right so if we keep going to to the left side and find the left most leaf 
+we will return the minimum value 
+this also applies to the maximum value on the right side if we go to the 
+right most leaf we will return the maximum value 
+
+so if we get this question on a interview we need to find out if we are dealing with a binary search tree
+or a binary tree
+
+if we are given a binary tree we need to search for the minimum value using the 
+minimumAlgorithm that we have 
+
+if we have a binary search tree we need to find the left most leaf 
+lets see how to do that (please look to minBinSearch to see the answer)
+
+we want to first set a variable of current to the root we are going to need a while statement 
+while current is not null we are going to set current to current.leftChild 
+this way we can keep going to the left subtree
+so at somepoint current is going to be null so we are going to need another reference or 
+another pointer to the left most child
+so we are going to make another variable called last and we are going to set it to current 
+
+now inside of the while statement before we set current to the leftchild we are going to set 
+last to current so now when ever current becomes null because we are setting last before it goes on to the 
+next left child variable last will hold the value
+in other words last is a step behind current 
+
+Now when current becomes null we want to break out of the while statement and return last.value 
+
+now if the tree is empty this return line is going to throw a null error 
+so we should guard against this by throwing a error
+
+now that we finished both of the methods it is time to calculate the time complexity of 
+each of these methods 
+
+for the minimumAlgorithm this is going to be a O(n) because we have to traverse each of the nodes in the tree
+to find the minimum value 
+
+next for minBinSearch. because we are not traversing through the whole tree we are just trying to find the left most 
+leaf so in every iteration we are throwing out half of the nodes in this tree to narrow down our search 
+this is O(log n) 
