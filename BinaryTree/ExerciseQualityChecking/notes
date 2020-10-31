@@ -1,0 +1,52 @@
+This is the notes for ExerciseQualityChecking
+
+This is a popular/common interview question 
+we need to write code to check 2 trees for equality so in 
+in the tree class we are going to add a new method called equals 
+which gets a tree object and returns a boolean 
+
+we are going to duplicate the current tree that we have and create another 
+tree with the exact same nodes and see if the 2 trees are equal
+this will be fairly easy to solve using recursion 
+we are going to use recursion to make sure that the left and right subtrees are equal
+
+Solution:
+
+first we are going to start with our public method we are going to give it the parameter of other 
+this will be where we are going to pass the other tree object
+next we are going to create a if statement that if the other tree object is null then we 
+are just going to return false 
+
+next we are going to call the recursive function and pass the root of the current tree and then the 
+other tree objects root
+with this we are done with the public function 
+
+Now on to the private recursive function.
+this method will accept 2 agruments first and second this is to represent the nodes we are comparing 
+in the tree objects
+
+the first thing we want to check for is if the first and second tree objects are empty
+if they are empty this means technially they are equal so we are going to return true.
+
+next if first or second is not null then we need to compare the value of these 2 nodes
+so we are going to return first.value == second.value
+but at the same time we want to look and see if the right and left subtrees are 
+the same so this is where we are going to use recursion
+
+so we are going to add 
+&& this[equalsAlgorithm](first.leftChild, second.leftChild)
+&& this[equalsAlgorithm](first.rightChild, second.rightChild);
+
+this will traverse the tree node by node to see if they are the same 
+
+now lastly this is where we check to see if one of these nodes are null and the other is not 
+so we will simply return null
+
+now here is an important question what kind of traversal algorithm did we do here?
+the answer is preorder traversal
+
+this is because we are comparing the root nodes first them moving to the left then we are moving to the 
+right
+
+
+

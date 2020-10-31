@@ -1,0 +1,17 @@
+This is the notes for LevelOrderTraversal
+
+Earlier we mentioned that there are 2 catergories of algoritms to traverse our trees
+breadth first and depth first 
+
+so far we hav been working with depth now we can look into breadth also known 
+as level order traversal 
+
+in level order traversal we go level by level we start from the top we print 20
+then we go to the second level and we print 10 and 30 and so on
+
+so how do we implement this? 
+well first we need to find how many levels do we have this is equal to the height of our tree
+every node has a height property 
+
+the leaf nodes at the bottom start at 0 and as we go up the tree the number increases
+the height pf the tree equals the height of the root 

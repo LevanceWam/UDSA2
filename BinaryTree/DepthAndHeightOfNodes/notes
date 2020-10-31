@@ -1,0 +1,80 @@
+This is the notes for DepthAndHeightOfNodes
+*Please refer to the screenshot of the tree to better understand 
+
+Now we are going to talk about 2 properties of tree nodes
+depth and height. a lot of people mix these two up but they are actually different 
+
+so if we look at the root 20 it's depth is zero as we go down and as we go deeper
+the depth increases. so the depth of 10 is 1 and the depth of 30 is also 1
+so what about 8? it is 3
+
+we basically count down from the top starting at 0 
+another way to calculate depth is by counting the number of edges 
+basically count the levels 
+
+So what is height? height is the opposite of depth 
+all of the leaf nodes (nodes on the bottom) are at a height of zero
+as we go up the height increases just like the height of people 
+so the height of 6 is one 
+so what is the height of 10 well to calculate this we need to find the longest 
+path from the leaf nodes to the node of 10 
+once we found the path we ended up with the height of 2
+node 10 height is 2
+following this logic 30 height is 1
+now what about 20? Again lets find the longest path and we will see that it is 3
+so main root 20 height is 3
+
+The height of the root node is also called the height of the tree
+now we want to write the code to calculate the height of a tree
+
+so we start at the root of the tree and find the longest path to the leaf
+now this might seem like it is a little complex to solve but 
+with the help of recursion this will be easy
+
+In fact most of the tree algorithms can be easily solved using recursion 
+
+so lets start breaking down this large problem into smaller ones 
+now instead of calculating the height of the tree we can calculate the height of the 
+right and left subtrees what would be the height of the right subtree? 1
+now what about the left? it is 2
+
+We are now going to what to compare the values and see which one is taller 
+in this case the one on the left is 
+now we just go one level up to calculate the hieght of the tree 
+
+the formula for calculating the height of the node is one plus max of height of right and left trees
+hieght is a method that is calling its self recursively 
+
+lets say that we want to calculate the height of the left subtree 
+so lets break it down into smaller parts 
+
+so calculating the height is super easy because here we have a single node at 21 which is zero 
+but what about the left side again we break this down
+3 is 0 go a level up 6 is 1 and another level up 10 is 2
+now we want to compare the height value of 6 and 21 
+since 6 is bigger we are going to add one to it and 10 height is 2 
+
+Here is a quick question what kind of traversal algorithm are we using?
+the answer is postOrder traversal 
+remember with post order we visit all of the leaves before going up in the tree 
+
+in this example we visit 3 and 8 first get their heights and pass them up to 6
+now we have the heights of 6 and 21 so we pass it up to the 10
+and we keep this up until we get to the 20
+
+so lets implement this in the class 
+
+so we are going to want to make a private method 
+called height algorithm 
+in this method we want to return 1 + the max of the height of root.leftchild and right child 
+for this we will use the Math.max function to 
+find which one has the higher value then add one to it 
+
+but there is a little problem our leaf nodes need to return 0 in order for this function 
+to work properly 
+
+so we need to set the base condition that if the left and the right child is null return 0
+
+now we create a public method to return the private function and then we print the value 
+
+also we need to write a if statement for if the tree is empty to return -1

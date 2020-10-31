@@ -1,0 +1,58 @@
+This is the notes for Recursion
+
+Before we look at travesal algorithms we need to look at recursion.
+recursion is a powerful programming technique for implementing 
+repetition. They are just like loops but they work a little differently 
+
+Example:
+Let's say that we want to calculate the factorial of a number 
+so lets say we want to find the factorial of 4 
+4! = 4 x 3 x 2 x 1
+3! = 3 x 2 x 1
+
+Now lets implement this 
+the easiest way to do this would be to use a loop
+so lets create a method to handle this 
+
+so using the for loop approach we create a variable called factorial with the value of one 
+in the for loop the value of i is set to the value we passed through the function 
+and as long as i is greater than 0 this loop will run 
+with each iteration of i we will multiply it by factorial
+
+this approach to factorial is called iteration because we are using a loop
+
+Now with recursion is another approach for implementing repetition
+in our code without using a loop.
+lets see how this works 
+
+Looking at the 4 factorial we can see that the 3 factorial is included
+in the four factorial 
+4! = 4 x 3 x 2 x 1
+3! = 3 x 2 x 1
+
+we can rewrite the expression as four times 3 factorial 
+4! = 4 x 3!
+to generalize it 
+n! = n x (n-1)
+
+we are expressing a problem ith a smaller problem 
+so lets implement this method 
+
+This is the interesting part in this method we are calling the method itself
+this is called recursion so recursion happens when a function or a method calls itself 
+this method is referred to as a recursive method
+
+now with this implementation we have a small problem 
+we have a cycle because we are going to call this repetitively 
+call this function forever
+because once it hits zero it is going to look for the factorial of 0 forever 
+by the way we can only find the factorial of positive numbers
+
+so lets make a if statement that if n == 0 we return 1
+this is what we call a base condition which is a way to terminate the recursion
+with out the space condition this recursion is going to go forever 
+
+What does this have to do with trees though? Well 
+trees are complex data structures but as we learn we can down a complex
+problem into a bunch of smaller and smaller problems and then solve each problem 
+using recursion

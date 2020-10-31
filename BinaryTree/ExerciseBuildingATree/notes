@@ -1,0 +1,66 @@
+This is the notes for ExerciseBuildingATree
+
+We are going to build a tree from scratch 
+in this class we need to have:
+root
+nodes (value, leftchild, rightchild)
+insert(value)
+find(value) boolean
+
+we are not going to build a delete functionality because 
+this is a fairly complex method that has a few edge cases
+and it barely comes up in coding interviews
+it also takes a lot of time to implement  
+
+
+solution: 
+
+first we need to create a node class
+this will be the nodes that we are inserting into the tree
+it will have the value, leftChild, and rightchild properties 
+
+We want the node clas to be private and make sure that nothing else has access to 
+it expect the tree class
+
+Next up is the tree class itself here in the constructor we made the root variable where this is all going 
+to start from 
+
+now we are going to start working on the insert method
+we create a function that accepts a value 
+this value will be the number we are going to insert into the tree
+
+We need to write the logic to put the number in the right place 
+so now we need to make a new node and store it in a variable that way we have 
+an easier way to access it.
+
+next if the root is equal to null this means it is empty and we need to set the 
+node to the root 
+
+if the node is not null then we need to set the node to either the left child or the right 
+
+so we need to create a while statement 
+we are going to make this a infinite while loop until we find a parent for the node 
+when we find the parent we are going to set the node and break out of the while loop
+
+now we are going to want to compare the value of the node we want to insert to the value of the current node 
+if the value is less than the current value it need to be placed in the left sub tree
+so we set the current value to the current.leftChild
+else it needs to be in the right sub tree
+
+now if the value of either the right or left is null
+if it is null then the this node is the parent of the new node we want to insert 
+we want to break out of this node if it is true 
+
+find method 
+This is a little bit similar to the insert method we need to 
+traverse the list in order to find the value 
+
+so we see the root to a variable of current 
+then we make a while statement 
+while current is not equal to null then we will continue to move through the list 
+next inside of the while loop 
+if the value we are searching for is less than the current then we need to 
+search on the left side of the tree so we set the current to the next node on the left 
+and if value is greater we go to the right 
+
+else we return true

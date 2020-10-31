@@ -1,0 +1,27 @@
+This is the notes for ExerciseNodesAKDistance
+
+Another popular interview question is printing the nodes at a given distance from the root
+for example they give us a tree like we ahve a screen shot of and 
+say write code to print print all of the nodes with distance three from the root 
+
+so for this example we are going to start from the root and we go 3 levels down and print these 2 nodes
+3 and 8  
+
+how are we going to solve this problem? 
+with trees we should always think about recursion we 
+need to think about breaking this problem down into smaller problems 
+
+now what is the easiest case?
+that is when the distance equals 0 
+simply print the value of the root node 
+
+so we can start the root node with the number we want to travel and 
+everytime we go down a level we subtract from that number till we hit 0 
+
+so this recursive method needs to take 2 parameters one is the root of the tree and 
+the other its distance parmeter we're going to use this method to traverse the tree
+everytime we go down we decrement the number by 1 
+when the distance is zero all we are going to do is print the value of the root node 
+
+solution:
+just like the other methods 

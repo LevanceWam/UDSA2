@@ -1,0 +1,95 @@
+This is the notes for TravesingTrees
+
+In linear data structures like arrays and linkedlist 
+we have only one way for travesing from the beginning we go forward to the end
+
+But trees are non-linear so if we start traversing from root to node we have 2 possible directions
+we can either go left which will lead us same situation of going left or right
+or we go right and keep going right 
+
+So we are going to take a look at some ways to traverse a tree
+all of these approaches are classified into 2 categories we can either go 
+breadth first
+depth first 
+
+in breadth first traversal also known as level order traversal 
+we visit all of the nodes at the same level before visiting the next level
+(Please look to the screenshot of the tree to better understand the next example)
+
+For Example:
+We start at the root of the tree and visit node 7 
+then we go to the 2nd level and visit 4 and 9 then finally 
+we will visit the 3rd level annd visit the nodes there
+this method is called level audit traversal because we are traversing level by level 
+
+next lets take a look at depth first traversal
+we have 3 different ways here:
+pre order traversing
+in order traversing
+post order traversing
+
+in pre-order traversal we visit the root first followed by its left sub tree and then the 
+right sub tree with 
+
+for in-order traversal we visit the left sub tree then the root
+then the right sub tree
+
+in post-order traversal we visit the left sub tree followed by the 
+right sub tree then finally to the root 
+
+easiest way to remember them
+pre-order: root, left, right
+in-order: left, root, right
+post-order: left, right, root
+
+Now lets look at some examples 
+
+Pre-order:
+we start at the root and print the value of this node 
+next we go to the left sub tree now in this subtree we visit 4 and then move
+to it left sub tree this subtree has a single node so once we visit one we have to go back 
+to the previous sub tree since we already visited 4 now we move on to the right sub tree
+we visit 6 and we are done with this sub tree so now we go back to the root 
+now we can move on to the right sub tree so just like before  we are going to visit 
+9 -> 8 -> 10 
+
+so if we use Pre-order we get this in return 7 4 1 6 9 8 10
+
+so instead of printing level by level we start at the root and go deep
+to all of the children and grandchildren this is why this is called depth first 
+
+In-Order:
+with in-order traversal we visit the left subtree first and then the root and then the right sub tree
+so we start at the root but we do not visit or print this node yet 
+we just go straight to the left subtree first. now in this subtree 4 is the root again we can't 
+vist this node yet we have to visit its left subtree
+this is a single node tree so once we visited we have to go back to the previous subtree
+since we visited the left subtree of the root node it is now time to visit the root node itself 
+and then visit the right subtree
+so we went 1 -> 4 -> 6
+now that we are done in this subtree we go back to the main tree and visit the root node which is 7
+then we go on to the right subtree
+Once again we have to we have to visit the left subtree at the root of the node
+so we go 8 -> 9 -> 10
+
+now here is the interesting part if we do a in order traversal on a tree
+our numbers will come out in ascending order 1 4 6 7 8 9 10
+what if we wanted the numbers to come in descending order 
+we simply swap the order of visiting the nodes instead of visiting the left first we do the right
+so right, root, left
+
+Post-Order traversal:
+this one is similar to in-order
+we start at the root and before we visit or print the node 
+we have to visit its left and right subtree so we go 1 to 6 to 4
+then we go to the root but we can not visit it yet we have to visit its right subtree 
+so we go 8 10 9 and now we have visited both the left and the right sub trees of our root node 
+so now it is finally time to visit the main root 
+so the numbers are printed in this order 1 6 4 8 10 9 7 
+
+here is the interesting thing about post order traversals
+if we pay close attention we will notice that were going to traverse the tree from the
+it's leaves all the way up to its root 
+this is really useful in solving tree problems in a lot of cases we should start by visiting the leaf nodes first
+
+Now the way we are going to accomplish this is to use recurrison!
