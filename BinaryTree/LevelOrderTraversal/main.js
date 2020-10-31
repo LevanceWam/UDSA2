@@ -113,7 +113,7 @@ class Tree {
 
      traverseLevelOrder(){
          for(let i = 0; i <= this.height(); i++){
-             kDistanceAlgorithm(i);
+             this.kDistance(i);
          }
      }
 
@@ -201,4 +201,4 @@ tree.insert(6);
 tree.insert(8);
 tree.insert(10);
 
-tree.kDistance(3);
+tree.traverseLevelOrder();
