@@ -1,0 +1,95 @@
+This is the notes for ExerciseValidatingBinarySearchTrees
+
+This is another interview question
+we are given a binary tree and we should write code to validate the binary tree
+we should check to see if this binary tree is a binary search tree 
+
+remember in a binary search tree all of the values in the left subtree need to be less than the 
+and all of the ones in the right subtree are supposed to be greater than the root 
+in the sceenshot you can see that we have 21 on the left side this is not supposed to be here
+neither is 4 on the left side 
+
+now how do we solve this problem?
+well we can use recursion to start from the top
+for every node we look at its left and right subtree
+if all of these values are in the right range then we go on to the next node 
+we can use recursion to visit every node in the tree 
+
+However this solution is a little costly because if we 
+pay close attention we will realize that will end up visiting the 
+left and right subtrees multiple times 
+for example when we visit 20 we have to look at every node in the left subtree and make sure
+they are smaller than 20 then we have to visit 10 to do the same thing 
+then 3 , 6  and etc.
+
+There is a better way to do this, we can traverse this tree and for every node we can check 
+to see if the value of this node is in the right range 
+
+to better explain this lets start from the top
+if this was the only node in the tree what is the range of values
+we can store in this node? 
+We can start any numbers from negative infinity to positive infinity
+there are no limits 
+
+so all of the values on the left should be less than 20 
+so the range for this node should be from -infinity to 20
+by the way 20 can not be included in here so it is technically to 19
+so since the next value is 10 anything that is on the left of it need to be anywhere from 
+-infinity to 10 anything on the right needs to be from 10 to 20 
+and the rest of the tree follows this rule 
+this is also vise versa for the right subtree just instead we are dealing with maximums
+
+so using this algorithm we are visting each node once so this is how we are going to solve it 
+we need a recursive method 
+
+this method needs to take 3 parameters the node were visiting the minimum value and the maximum value 
+we use recursion to recursively traverse the tree and validate the value in each node 
+
+quick question what kind of travesing algorithm are we using here?
+we are using the pre order traversal algorithm
+
+this is because we are validating the route first and if it is valid then
+we look at its left and right subtrees  
+
+solution:
+
+first we are going to create our private method 
+in this private method we are going to set up the parameters root min and max
+
+first we need to check and see if the tree is empty if it is empty we are going to return true
+this is because this counts as a binary search tree
+
+next we need to validate the value in the root node
+to make sure the value is in the right range
+
+so if root.value is less than min or more than max it is out of range
+we are going to want to return false here
+
+now if we make it pass that our value is in the right range 
+now we should be looking at the left and right subtrees 
+
+so we call the isBinaryAlgorithm inside if itself and pass root.leftchild as the first agrument and 
+now we need to set the valid range of values for the left side which is min, then root.value -1 
+this is going to return a value and tell us if the leftchild is in the right range 
+
+similarly we should check to see if the rightchild is in the right range 
+so we add the && operator and call the isBinaryAlgorithm again 
+this time it is going to be  root.rightchild, root.value +1, max
+
+now all we have to do is to return the result of the binary expression
+
+now we need to make a public method to call the recursive method 
+so we are going to return the recursive method and for the arguments we are going to pass the 
+root of this tree, Number.min_value, Number.max_value 
+this is because we so not have any constraints for the value in the root node we can have any valid number
+this is how we validate a binary search tree
+
+*NOTE*
+Number.Min_value: The MIN_VALUE property is the number closest to 0, not the most negative number, that JavaScript can represent.
+ Number. MIN_VALUE is 5e-324 , i.e. the smallest positive number that can be represented within float precision, i.e. 
+that's as close as you can get to zero.
+
+Number.Max_value: The largest number that can be represented in JavaScript. Equal to approximately 1.79E+308
+
+now to test the other scenario where this is not a binary search tree
+we are going to create a method that swaps the left and the right subtrees;
