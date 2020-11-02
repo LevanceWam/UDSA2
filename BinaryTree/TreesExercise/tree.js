@@ -20,10 +20,13 @@ const isLeaf= Symbol();
 class Tree {
      constructor(root=null){
          this.root = root;
+         this.size = 0;
      }
 
      insert(value){
-        let newNode = new Node(value)
+        let newNode = new Node(value);
+        this.size++;
+        
 
          if(this.root == null){
              this.root = newNode;
@@ -134,6 +137,10 @@ class Tree {
          }
      }
 
+     getSize(){
+         return this.size;
+     }
+
      [PreOrderAlgorithm](root){
         if (root == null) return;
 
@@ -227,5 +234,5 @@ tree.insert(6);
 tree.insert(8);
 tree.insert(10);
 
-console.log(tree.maxBinSearch())
-console.log(tree.max())
+// console.log(tree.maxBinSearch())
+console.log(tree.getSize());
