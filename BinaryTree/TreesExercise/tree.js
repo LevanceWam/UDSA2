@@ -15,7 +15,8 @@ const maximumAlgorithm = Symbol();
 const equalsAlgorithm = Symbol();
 const isBinaryAlgorithm = Symbol();
 const kDistanceAlgorithm = Symbol();
-const isLeaf= Symbol();
+const countLeavesAlgorithm = Symbol();
+const isLeaf = Symbol();
 
 class Tree {
      constructor(root=null){
@@ -141,6 +142,10 @@ class Tree {
          return this.size;
      }
 
+     countLeaves(){
+         return this[countLeavesAlgorithm](this.root);
+     }
+
      [PreOrderAlgorithm](root){
         if (root == null) return;
 
@@ -200,6 +205,18 @@ class Tree {
         return false;
      }
 
+     [countLeavesAlgorithm](root){
+        let count = 0;
+
+        if(this[isLeaf](root)){
+             count++
+             && this[countLeavesAlgorithm](root.leftChild)
+             && this[countLeavesAlgorithm](root.rightChild);
+         }
+
+        return count;
+     }
+
      [isBinaryAlgorithm](root, min, max){
         if (root == null) return true;
 
@@ -234,5 +251,4 @@ tree.insert(6);
 tree.insert(8);
 tree.insert(10);
 
-// console.log(tree.maxBinSearch())
-console.log(tree.getSize());
+console.log(tree.countLeaves())
