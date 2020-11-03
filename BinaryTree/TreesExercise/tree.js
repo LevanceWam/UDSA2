@@ -129,7 +129,9 @@ class Tree {
      }
 
      kDistance(distance){
-        this[kDistanceAlgorithm](this.root, distance);
+        let list = [];
+        this[kDistanceAlgorithm](this.root, distance, list);
+        return list;
      }
 
      traverseLevelOrder(){
@@ -143,7 +145,7 @@ class Tree {
      }
 
      countLeaves(){
-         return this[countLeavesAlgorithm](this.root);
+         return this[countLeavesAlgorithm](this.root,0);
      }
 
      [PreOrderAlgorithm](root){
@@ -206,15 +208,10 @@ class Tree {
      }
 
      [countLeavesAlgorithm](root){
-        let count = 0;
-
-        if(this[isLeaf](root)){
-             count++
-             && this[countLeavesAlgorithm](root.leftChild)
-             && this[countLeavesAlgorithm](root.rightChild);
-         }
-
-        return count;
+        if (root == null) return 0;
+        if (root.leftChild == null && root.rightChild == null) return 1;
+        
+        return this[countLeavesAlgorithm](root.leftChild) + this[countLeavesAlgorithm](root.rightChild);
      }
 
      [isBinaryAlgorithm](root, min, max){
@@ -229,7 +226,7 @@ class Tree {
      [kDistanceAlgorithm](root, distance){
         if (root == null) return;
         if (distance == 0) {
-            console.log(root.value)
+            console.log(root.value);
             return;
         }
 
@@ -238,7 +235,7 @@ class Tree {
      }
 
      [isLeaf](node){
-         return (node.leftChild == null && node.rightChild == null);
+         return (node.leftChild == null || node.rightChild == null);
      }
 }   
 const tree = new Tree();
@@ -251,4 +248,4 @@ tree.insert(6);
 tree.insert(8);
 tree.insert(10);
 
-console.log(tree.countLeaves())
+console.log(tree.countLeaves());
