@@ -17,6 +17,7 @@ const isBinaryAlgorithm = Symbol();
 const kDistanceAlgorithm = Symbol();
 const countLeavesAlgorithm = Symbol();
 const isLeaf = Symbol();
+const containsAlgorithm = Symbol();
 
 class Tree {
      constructor(root=null){
@@ -148,6 +149,10 @@ class Tree {
          return this[countLeavesAlgorithm](this.root,0);
      }
 
+     contains(value){
+         return this[containsAlgorithm](this.root, value);
+     }
+
      [PreOrderAlgorithm](root){
         if (root == null) return;
 
@@ -214,6 +219,16 @@ class Tree {
         return this[countLeavesAlgorithm](root.leftChild) + this[countLeavesAlgorithm](root.rightChild);
      }
 
+     [containsAlgorithm](root, value){
+         if (root == null) return false;
+         
+         if(root != null){
+             return root.value == value
+             || this[containsAlgorithm](root.leftChild,value)
+             || this[containsAlgorithm](root.rightChild,value);
+         }
+     }
+
      [isBinaryAlgorithm](root, min, max){
         if (root == null) return true;
 
@@ -248,4 +263,4 @@ tree.insert(6);
 tree.insert(8);
 tree.insert(10);
 
-console.log(tree.countLeaves());
+console.log(tree.contains(10));
