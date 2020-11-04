@@ -153,6 +153,22 @@ class Tree {
          return this[containsAlgorithm](this.root, value);
      }
 
+     areSiblings(first, second){
+         let current = this.root;
+
+         while (current != null){
+             if(first != current.leftChild.value && second != current.rightChild.value){
+                 current = current.leftChild;
+             }
+
+             if(first != current.leftChild.value && second != current.rightChild.value){
+                 current = this.root;
+                 current = current.rightChild;
+             }
+             else return true;
+         }
+     }
+
      [PreOrderAlgorithm](root){
         if (root == null) return;
 
@@ -263,4 +279,4 @@ tree.insert(6);
 tree.insert(8);
 tree.insert(10);
 
-console.log(tree.contains(10));
+console.log(tree.areSiblings(2,3))
