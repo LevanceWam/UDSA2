@@ -63,6 +63,8 @@ class Tree {
              else if (value > current.value) current = current.rightChild;
              else return true;   
          }
+
+         return false;
      }
 
      traversePreOrder(){
@@ -279,4 +281,4 @@ tree.insert(6);
 tree.insert(8);
 tree.insert(10);
 
-console.log(tree.areSiblings(4,9))
+console.log(tree.find(1))
