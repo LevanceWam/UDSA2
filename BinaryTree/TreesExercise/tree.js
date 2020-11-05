@@ -18,6 +18,7 @@ const kDistanceAlgorithm = Symbol();
 const countLeavesAlgorithm = Symbol();
 const isLeaf = Symbol();
 const containsAlgorithm = Symbol();
+const areSiblingAlgorithm = Symbol();
 
 class Tree {
      constructor(root=null){
@@ -154,19 +155,7 @@ class Tree {
      }
 
      areSiblings(first, second){
-         let current = this.root;
-
-         while (current != null){
-             if(first != current.leftChild.value && second != current.rightChild.value){
-                 current = current.leftChild;
-             }
-
-             if(first != current.leftChild.value && second != current.rightChild.value){
-                 current = this.root;
-                 current = current.rightChild;
-             }
-             else return true;
-         }
+         return this[areSiblingAlgorithm](this.root, first, second);
      }
 
      [PreOrderAlgorithm](root){
@@ -265,6 +254,17 @@ class Tree {
         this[kDistanceAlgorithm](root.rightChild, distance-1);
      }
 
+     [areSiblingAlgorithm](root, first, second){
+         if (root.leftChild == null && root.rightChild == null) return false;
+
+         let left = root.leftChild.value;
+         let right = root.rightChild.value;
+
+         return first == left && second == right
+         || this[areSiblingAlgorithm](root.leftChild, first, second)
+         || this[areSiblingAlgorithm](root.rightChild, first, second);
+     }
+
      [isLeaf](node){
          return (node.leftChild == null || node.rightChild == null);
      }
@@ -279,4 +279,4 @@ tree.insert(6);
 tree.insert(8);
 tree.insert(10);
 
-console.log(tree.areSiblings(2,3))
+console.log(tree.areSiblings(4,9))
