@@ -19,6 +19,7 @@ const countLeavesAlgorithm = Symbol();
 const isLeaf = Symbol();
 const containsAlgorithm = Symbol();
 const areSiblingAlgorithm = Symbol();
+const getAncestorsAlgorithm = Symbol();
 
 class Tree {
      constructor(root=null){
@@ -160,6 +161,12 @@ class Tree {
          return this[areSiblingAlgorithm](this.root, first, second);
      }
 
+     getAncestors(value){
+        let array = [];
+        this[getAncestorsAlgorithm](this.root,value,array);
+        console.log(array)
+     }
+
      [PreOrderAlgorithm](root){
         if (root == null) return;
 
@@ -267,6 +274,23 @@ class Tree {
          || this[areSiblingAlgorithm](root.rightChild, first, second);
      }
 
+     [getAncestorsAlgorithm](root, value, array){
+         if (root == null) return;
+         if(!this.contains(value)) throw new Error('This number is not in the tree');
+
+         while (root.value != null){
+            if (value < root.value){
+                array.push(root.value);
+                this[getAncestorsAlgorithm](root.leftChild, value, array);
+            }
+            if (value > root.value){
+                array.push(root.value);
+                this[getAncestorsAlgorithm](root.rightChild, value, array);
+            }
+            return;
+         }
+     }
+
      [isLeaf](node){
          return (node.leftChild == null || node.rightChild == null);
      }
@@ -281,4 +305,4 @@ tree.insert(6);
 tree.insert(8);
 tree.insert(10);
 
-console.log(tree.find(1))
+tree.getAncestors(0)
