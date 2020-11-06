@@ -252,15 +252,15 @@ class Tree {
                 && this[isBinaryAlgorithm](root.rightChild, root.value + 1, max);
      }
 
-     [kDistanceAlgorithm](root, distance){
+     [kDistanceAlgorithm](root, distance,list){
         if (root == null) return;
         if (distance == 0) {
-            console.log(root.value);
+            list.push(root.value);
             return;
         }
 
-        this[kDistanceAlgorithm](root.leftChild, distance-1);
-        this[kDistanceAlgorithm](root.rightChild, distance-1);
+        this[kDistanceAlgorithm](root.leftChild, distance-1,list);
+        this[kDistanceAlgorithm](root.rightChild, distance-1,list);
      }
 
      [areSiblingAlgorithm](root, first, second){
@@ -295,14 +295,5 @@ class Tree {
          return (node.leftChild == null || node.rightChild == null);
      }
 }   
-const tree = new Tree();
 
-tree.insert(7);
-tree.insert(4);
-tree.insert(9);
-tree.insert(1);
-tree.insert(6);
-tree.insert(8);
-tree.insert(10);
-
-tree.getAncestors(0)
+module.exports = Tree;
