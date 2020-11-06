@@ -27,7 +27,7 @@
 
 <h3>Application of trees</h3>
 
-<h3>We use trees anywhere we ant to represent hierarchical data. Such as a tree of people in our organization, family, or flies and folders on your desk. Next, we have databases database management systems use trees for indexing so they can quickly look up data. Another great application of trees is implementing auto completion. For example chrome stores all of our previous web searches in a tree so whenever we are typing a query it tries to match it with previously stored queries. They are also used in compliers, compliers use a special type of tree called syntax tree to parse expression. They are also used in compression algorithms such as those used by JPEG and MP3 file formats </h3>
+<p>We use trees anywhere we ant to represent hierarchical data. Such as a tree of people in our organization, family, or flies and folders on your desk. Next, we have databases database management systems use trees for indexing so they can quickly look up data. Another great application of trees is implementing auto completion. For example chrome stores all of our previous web searches in a tree so whenever we are typing a query it tries to match it with previously stored queries. They are also used in compliers, compliers use a special type of tree called syntax tree to parse expression. They are also used in compression algorithms such as those used by JPEG and MP3 file formats </p>
 
 <h4>Tree Operations & Runtime Complexities</h4>
 
@@ -36,3 +36,5 @@
     <li>Lookup O(log n)</li>
     <li>Delete O(log n)</li>
 </ul>
+
+<a href="#home">Top</a>
