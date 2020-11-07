@@ -1,0 +1,82 @@
+This is the notes for BalancedAndUnbalancedTrees
+
+As we learned in the earlier section most of the operations in a binary search tree
+run in logarithmic time (O(log n)) this happens only when a 
+tree is balanced 
+
+In a balanced tree the difference between the height of the left and the right 
+right subtrees of every node should be less than or equal to one 
+In other words we can not have a long branch
+
+we are going to take a look at a few examples so please refer to the screenshots
+to follow along 
+
+first the perfect tree screenshot every level except the last level is
+full of nodes. In reality our trees will hardly lookn like this 
+as we add and remove values so some branches will get longer 
+so it will look like the balanced screenshot 
+
+this screenshot of tree is balanced because the difference between the
+height of the left and right subtrees of every node is less than or equal to one 
+
+However if we take a look at the unbalanced screenshot
+we will see that if we add a new node the tree becomes unbalanced
+the right subtree is taller than the left subtree by more than one 
+
+so to make it a little easier for future me to understand
+before we added the new node the tree distance of the right subtree nodes
+was one and for a tree to be balanced the rule says it need to be 1 or less
+
+Now by adding the new node it is off because the height on the right goes to 2
+this breaks that rule
+
+now here is another type of unbalanced tree
+this one is called the right skewed binary tree
+in a right skewed tree most of the nodes have the right child 
+we also have left skewed trees binary trees 
+in which most of the nodes have only a left child 
+
+these few trees are actually the worse types of binary search trees 
+in fact they are not trees at all they are like linked list 
+where every node references the next node 
+
+if the value that we are looking for isn't last then we have to 
+traverse the entire tree to find it 
+this is an O(n) operation
+just like searching for a item in a link list.
+
+How do trees become unbalanced?
+this happens when we insert sorted values into trees
+whether its in ascending or descending order
+
+so if we add the values 7 10 15 20 and 25 into a tree this is 
+going to give us a right skewed tree
+if we flipped this and made it into descending order 
+we would have a left skewed tree
+
+now here is the thing even if the numbers are not sorted 
+are trees can still be unbalanced 
+
+but there are different algorithms for balancing 
+trees 
+
+AVL trees (adelson-velsky and landis) are the first self balancing trees
+this was introduced in the 60's
+
+they are named after their investors adelson-velsky and landis
+these are a very special kind of binary trees but they have a 
+self balancing property so everytime we insert or remove a value 
+the tree rebalances itself
+
+AVL trees are not the only self balancing trees
+we also have:
+Red-black trees 
+B-trees
+Splay Trees
+2-3 trees
+
+the rest of these trees are not on interviews and most software engineers don't
+know what some of these trees are 
+
+
+
