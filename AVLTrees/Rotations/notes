@@ -106,3 +106,5 @@ so we will have this 5 -> 7 -> 10
 now the tree is right heavy to balance this we need to rotate it to the left
 so we are going to drop 5 and make it a child of 7 so the new tree will look like this 
 7 -> 5 -> 10
+
+I downloaded the video beacuse i need to see some of the diagrams in the future
