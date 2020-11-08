@@ -1,0 +1,36 @@
+This is the notes for ExerciseHeightCalculation
+
+now that we implemented the insert method the next thing we need to do is 
+calculate the height of every node 
+
+because in avl trees we have to compare the height of the left and right sub trees of every node
+and make sure that the difference is not greater than 1
+this is how we detect if the tree is unbalanced
+
+so in the AVL tree object we need to introduce a new field for 
+storing the height of the node 
+
+then when we insert a new node we should reset the height of all the parents of this new node 
+so we set root.height = max(left,right)  + 1
+
+this is how we calculated the height of the node in the binary tree
+
+after we insert the new node as a child of the root node 
+we are going to reset the height of this node and because we are calling this 
+private method recursively everytime we step out of this method 
+we get the parent of the current node this way we can reset all of the 
+heights of all the parents of the new node 
+
+solution:
+
+first in the AVL node we are going to want to create a height value in the AVL node class
+
+next we are going to create a private method for height
+in this method we want to check and see if the node is null so if 
+there isn't a node then we return -1 else we return the the nodes height
+
+Now for creating the logic to add a height
+in the insert method 
+
+we are going to set the height of the root left and right child and add it by one 
+thats it
