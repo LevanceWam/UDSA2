@@ -1,0 +1,9 @@
+This is the notes for ExerciseBuildingAnAVLTree
+
+over the next couple of lectures we are going to build 
+a avl tree from scratch 
+
+this is what we need to do 
+create a class called AVL tree
+Create a private class called AVL node
+insert method this time use recursion to implement this method 
