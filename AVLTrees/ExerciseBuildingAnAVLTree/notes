@@ -7,3 +7,57 @@ this is what we need to do
 create a class called AVL tree
 Create a private class called AVL node
 insert method this time use recursion to implement this method 
+
+solution: So for this creating the classes and setting the private 
+variables are easy what we are going to work on explaining
+is how we got the insert to work recursively
+
+so first we created the recursive method this method takes the parameters of 
+root and value 
+
+now we need to start off with a base condition that this recursive method knows 
+when to stop
+
+so if (root == null) we are going to set
+ it to the new node with the value we are trying to pass
+ now with the code we tried to write 
+ root = newnode; this is not going to work 
+ because it is not going to intialize the main root in the tree 
+ it is going to intialize the root argument we have in the function and we do not 
+ want that
+
+so this is how we are going to fix this 
+so we are going to return the new node and set the 
+root in the public method to the private recursive function
+
+To simplify this:
+Because setting the root in the private function intializes the root parameter in the 
+function and not the main root we want to target 
+we are going to instead return the value in the private function 
+and have the main root catch this value/object
+this will set the main root to the value we are passing 
+so we are directly setting the root field 
+
+Now if the root is not empty the value we are passing needs to 
+go to the left child or the right child of the tree
+
+so under the if first if statement we have we are going to create another one
+so if (value < root.value) we are going to call recursively
+the private insert method and in the root parameter we are going to 
+put root.leftchild and the value 
+so it will look like this 
+this[insertAlgorithm](root.leftChild, value)
+
+else we send it to the right like:
+else{
+    this[insertAlgorithm](root.rightChild, value)
+}
+
+now just like before this is going to be returning a new object 
+because when we get to the right or left child we are going to see that 
+it is null so the first if statement is going to fire 
+so for each of the children in their statements we are going to 
+catch their objects with the correct child 
+so we set
+root.leftChild = this[insertAlgorithm](root.leftChild, value)
+root.rightChild = this[insertAlgorithm](root.rightChild, value)
