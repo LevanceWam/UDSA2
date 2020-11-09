@@ -1,0 +1,62 @@
+This is the notes for ExerciseBalanceFactor
+
+Now that we have the height of every node 
+we have to check to see if the tree is unbalanced 
+this is easy to do this 
+
+after we append a new node to the root node it is possible 
+that this root node or more of its parents become unbalanced
+
+after we set the height we have to comparre the height of the left and right 
+subtrees we want to make sure that that the 
+difference is less than or equal to 1 
+
+so we need to introduce a new concept in the insert method called the balanceFactor \
+and that is equal to the height of the left minus the height of the 
+right subtree so if the height if the height of the right
+subtree is 5 and the height if the right subtree is 4
+the balance factor is 1 which is good 
+
+but if the balance factor is greater than one then the tree is unbalanced
+
+so if balance factor is greater than 1 it is left heavy
+we would need to perform a right rotation
+
+another thing to thing about if the height of the left tree is smaller 
+than the height of the right tree out tree might be right heavy 
+
+so if the left side of the tree is 3 and the right is 4
+3-4 the difference is -1 we are still good but if the height if the right sub tree was 5 
+the balance factor is going to be right heavy 
+3-5 = -2 
+
+so if balance factor is less than -1 this means that the tree is top heavy 
+so for this exercise we need to calculate to see if the balance factor falls between the ranges 
+of 1 and -1 
+
+if the height is greater than 1 print which node is left heavy and if the 
+balance factor is less than -1 one print the one that is right heavy 
+
+solution:
+
+First we want to creating the balance algorithm
+isleftheavy algorithm and the rightHeavy algorithm
+
+in the balanceFactor algorithm we are checking to see if the node is
+null or the tree is empty if it is we return 0 or we calculate the difference 
+between the 2 branch heights
+
+next we are going to work on the isleftheavy or isrightHeavy methods
+so these are very similar the only thing that is different is what we are compairing the 
+value too
+
+So in both of these methods we are going to want to return if the value of balanceFactor is < -1
+or > 1 for the respected methods 
+
+then in the insert method we are going to call the balanceFactor method and store it into a variable 
+now that this function is called 
+we are going to call the isheavy methods and put them inside of if statements
+
+TO break it down once we have the value that we need from the balance function
+the isHeavy methods are going to check every nodes height and see if we are following 
+the baalance rule everytime we insert a method 
