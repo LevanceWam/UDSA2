@@ -1,0 +1,14 @@
+This is the notes for ExerciseDetectingRotations
+
+The next thing we need to figure out is what kind of rotation we need 
+so if we have a right skrewed tree we need to 
+do a left rotation on 10 which will make it the left child of 20 
+
+and if we have a left skewed tree we need to do a 
+right rotation on 30 and make it the right child of 20
+
+if we have it with a list like this 10 30 20 
+we are going to have to do a RL rotation
+
+As a part of detecting what kind of rotation we need we 
+need to figure out what is the shape of the tree
