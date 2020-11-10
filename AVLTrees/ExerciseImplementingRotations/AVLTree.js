@@ -14,6 +14,9 @@ const isLeftHeavy = Symbol();
 const isRightHeavy = Symbol();
 const balanceFactorAlgorithm = Symbol();
 const balance = Symbol();
+const rotateLeft = Symbol();
+const rotateRight = Symbol();
+const setHeight = Symbol();
 
 class AVLTree {
     constructor(root=null){
@@ -36,26 +39,54 @@ class AVLTree {
             root.rightChild = this[insertAlgorithm](root.rightChild, value);
         }
 
-        root.height = Math.max(this[heightAlgorithm](root.leftChild)+1,
-         this[heightAlgorithm](root.rightChild) +1);
+        setHeight(root);
 
-        this[balance](root);
-    
-     return root;   
-    }
+        return this[balance](root);
+        }
 
     [balance](root){        
         if (this[isLeftHeavy](root)) {
             if (this[balanceFactorAlgorithm](root.rightChild) < 0)
-                console.log('left rotate ' + root.leftChild.value)
-            console.log('right rotate ' + root.value)
+            root.leftChild = rotateLeft(root.leftChild);
+            return rotateRight(root);
         }
 
         if (this[isRightHeavy](root)) {
             if (this[balanceFactorAlgorithm](root.rightChild) > 0)
-                console.log('Right rotate ' + root.rightChild.value)
-            console.log('left rotate ' + root.value)
+                root.rightChild = rotateLeft(root.rightChild);
+            return rotateRight(root);
         }
+
+        return root;
+    }
+
+    [rotateLeft](root){
+        let newRoot = root.rightChild;
+
+        root.rightChild = newRoot.leftChild;
+        newRoot.leftChild = root;
+
+        setHeight(root);
+        setHeight(newRoot);
+
+        return newRoot
+    }
+
+    [rotateRight](root){
+        let newRoot = root.leftChild;
+
+        root.leftChild = newRoot.rightChild;
+        newRoot.rightChild = root;
+
+        setHeight(root);
+        setHeight(newRoot);
+
+        return newRoot
+    }
+
+    [setHeight](node){
+        node.height = Math.max(this[heightAlgorithm](node.leftChild),
+            this[heightAlgorithm](node.rightChild)) +1;
     }
 
     [heightAlgorithm](node){
