@@ -12,3 +12,9 @@ we are going to have to do a RL rotation
 
 As a part of detecting what kind of rotation we need we 
 need to figure out what is the shape of the tree
+
+The way we figure out the shape of a tree is by using the balance factor
+if the root is a right heavy node we look at the balance factor of the right child 
+
+
+solution:
