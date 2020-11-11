@@ -1,0 +1,110 @@
+This is the notes for Rotations
+
+AVL Trees are a special kind of binary tree that rebalances themselves 
+everytime we add or remove nodes they do this by ensuring the height on the left and 
+right sub tree is more than one 
+
+if the difference is more than one they rebalance themselves using
+rotations 
+
+in this lecture we are going to learn about the different types of 
+rotations 
+this is super important it comes up in exams and interviews!
+
+for example we can be given a series of numbers to add to 
+an AVL tree at each step we should demonstate that we understand where the tree 
+is unbalanced and how to fix it by using rotation most of the time 
+we would be asked to draw this on a white board because coding the solution can get a
+little bit complicated and time consuming 
+
+we have 4 types of rotations:
+Left rotations (LL)
+Right rotations (RR)
+Left Right rotations (LR)
+Right Left rotations (RL)
+
+the rotation that is used depends on what side of the 
+tree is heavy
+
+lets look into a few examples 
+
+first Left rotation: 
+
+so we start off with a tree that has nodes 1 and 2 
+now we add 3 (tree looks like 1 -> 2 -> 3) the tree now looks unbalanced because it is going to the right 
+we can prove this by calculating the difference in heights we alwats start with the node that
+we just added this node doesn't have any children on the left or the right 
+side so on both sides there is a height of 0
+
+Now we go up the tree and on the right side if the 2 we have one edge so here 
+we have a height of 1 and on the left we have a height of 0
+the difference is one so this is balanced as well 
+
+For the 1 on left side we have a height of 0 and on the right side we have a height of 2 
+since the difference is 2 our tree is unbalanced here 
+
+since the tree is heavy to the right we have to perform a Left rotation (LL)
+to rebalance the tree 
+so what we are going to do is take 1 and make it the child of 2 
+we are dropping it from the top and making it A child of 2
+
+after the rotation one side goes up and the other side comes down
+in other words the height of one side increases by one 
+while the height of the other side decreases by one 
+this is how the trees get balanced
+
+Right Rotation:
+
+Now we have a left skewed tree that is going in the 
+descending order of our previous tree (3 -> 2 -> 1)
+we need to rotate it to the right 
+
+so first we need to find the inbalance in the tree which is going to be 3
+so we are going to drop 3 from the top of the tree and make it the right child 
+of 2
+now the tree is balanced
+
+Left right rotation:
+here comes a double rotation
+for this example we are going to use 10 -> 5 -> 7
+
+Now there are times when we can not rebalance a tree using a left or right rotation we need
+to combine these rotations 
+
+lets first start by calculating the height of each of the nodes in the tree
+
+So lets say that we just added 7
+we have a height of 0 on both sides of the tree so the tree is balanced here
+we move up a node to 5 we see that 5 has a height of 0 on the left and 1 on the right
+this is still balanced
+
+now what about 10 it has a height of 2 on the left and 0 on the right 
+this is inbalanced 
+
+the inbalance is in the left child right subtree
+so we need to perform a left rotation followed by a right rotation
+so remember we have a inbalance in the left child right sub tree
+so left right rotation 
+
+so first we are going to perform a left rotation on the 5
+so the tree will look like this 10 -> 7 -> 5
+we are dropping the 5 and lifting the 7 up and making the tree turn into 
+a left skewed tree
+
+now that the tree is left heavy we can use the right rotation to 
+rebalance it so now we are rotating the 10 to the right so now the list will be like this 
+7 -> 5 -> 10
+
+Right Left rotation
+
+Now lets give right left rotation a try with the same tree nodes
+5 -> 10 -> 7
+
+so first we are going to want to drop the 10 and lift up the 7
+this means we need to use a right rotation 
+so we will have this 5 -> 7 -> 10
+now the tree is right heavy to balance this we need to rotate it to the left
+so we are going to drop 5 and make it a child of 7 so the new tree will look like this 
+7 -> 5 -> 10
+
+I downloaded the video beacuse i need to see some of the diagrams in the future

@@ -1,0 +1,69 @@
+This is the notes for AVLTrees
+
+lets try populating a AVLTrees so we can get a better understanding on how
+they balance themselves
+
+so we start off with a empty tree
+we are going to insert 30 into the tree 
+it is set as the main root and the tree is balanced
+
+next we are going to want to add 15 (30 15 )
+which will go to left but it is still balanced
+
+now we are going to add 18 this will be the right child of 15 because it is less than 30 but greater than 15
+now the tree is unbalanced (30 15 18)
+
+so the inbalance is in the left child right subtree so we need to 
+do a left right rotation
+we are going to drop 15 and lift up 18 so it will be in descending order 30 18 15
+then we are going to drop 30 to the right child of 18
+18 15 30
+
+now the tree is perfectly balanced 
+
+now we are going to add another number 10 
+10 is going to be in the left subtree as a child of 15
+this still leaves our tree balanced because the height of 
+the left side is 1 over the right 
+now we are going to add 16 which will be added to 15's right child 
+and the tree is still balanced 
+
+now what will happen if we added a 7
+it will have to be the left child of 10 so 
+this makes our tree unbalanced now because now the height will be set to 3 on the left and 1 on the right 
+and the left is 2 more than the right which breaks our rule of having a balanced tree 
+which makes our tree inbalanced
+
+the inbalance is on the left child left subtree so we should do a right rotation
+this one however is a little bit tricky
+
+because we would need to rotate 18 to the right because this is where we have the unbalance
+but when we rotate 18 to the right 15 is going to go up and 18 is going to come down 
+and become the right child of 18 
+
+so before we perform the rotation we need to temporary disconnect 16 from the 15
+ and bring it down to create some space 
+ now we can perform the right rotation this is going to bring 18 down and make it the right child of 15
+ now we need to attach the 16 somewhere but where can we do that 
+ well 16 > 15 and < 18 so we are going to make it the left child of 18
+Now the tree is balanced
+
+Lets add another number 
+lets try adding 8 
+so 8 is going to be the right child of 7
+this will make the tree up to the root of 10 unbalanced
+because 10 has no right subtree and the left has a height of 
+2 which breakes the balance rule 
+
+so the inbalance is in the left child right subtree 
+so wee need to do a left right rotation
+
+so first we need to drop the 7 and lift the 8 to the left making  7 8's left child  and 
+then we are going to drop 10 to the right of 8 
+and now our tree is balanced 
+
+I am going to download the video for this because this is lecture I need to see 
+the diagrams for the trees to help this make more sense 
+
+
+
