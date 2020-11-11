@@ -16,5 +16,54 @@ need to figure out what is the shape of the tree
 The way we figure out the shape of a tree is by using the balance factor
 if the root is a right heavy node we look at the balance factor of the right child 
 
+so what is the balance factor of this example:
+10 
+    20 
+        30
+
+so 10 is the root here if the root is a right heavy node we 
+look at the balance factor of its right child so what is the balance balanceFactorof 20 the left is 0
+and the right is 1 so 0 - 1 = -1 
+
+now what about this tree
+10 
+    30 
+20
+
+so we are looking at the balance factor of 30 the left has 1 and right 0
+so 1-0 = 1
+so if the balance factor of root.rightchild is greater than 0 
+our tree looks like this example about and we have to do a right rotation followed by
+a left rotation 
+
+so in the insert method we need to extend the logic of the leftHeavy and rightHeavy if statemtents
+to handle left right or right left rotations if needed 
+
 
 solution:
+
+so in the insert method we are going to make it a little bit more readable
+we are going to move the logic for the balance factor and place it inside of another 
+private method called balance
+
+we create the method and give it a parameter called 
+
+now in the insert method we are going to call the new balance method 
+after we set the height
+
+now we are going to work inside of the balance method 
+first we are going to get rid of the variable balanceFactor 
+because we are not using it anywhere 
+
+we are going to tackle the isRightHeavy first 
+so in here we should look at the balance factor of the right child
+of the root node if it is greater than 0 we need ton have a additional right rotationso if balanceFactor
+of root.rightChild is greater than 0 we are going to 
+console.log a right rotation
+
+now the root is right heavy so we should perform a left rotation on the root node 
+so outside of the balanceFactor if statement and back into the main 
+isRightHeavy if statement we are going to console.log a left rotation
+
+Now it is time to work on the leftHeavy algorithm
+all we have to do for this is do the opposite for the rightHeavy algoritm 

@@ -46,7 +46,7 @@ class AVLTree {
 
     [balance](root){        
         if (this[isLeftHeavy](root)) {
-            if (this[balanceFactorAlgorithm](root.rightChild) < 0)
+            if (this[balanceFactorAlgorithm](root.leftChild) < 0)
                 console.log('left rotate ' + root.leftChild.value)
             console.log('right rotate ' + root.value)
         }
@@ -79,6 +79,6 @@ class AVLTree {
 const tree = new AVLTree();
 
 tree.insert(10);
-tree.insert(30);
 tree.insert(20);
+tree.insert(30);
 console.log(tree.root)
