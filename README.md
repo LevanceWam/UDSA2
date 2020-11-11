@@ -41,3 +41,24 @@
 <a href="#home">Top</a>
 
 <h2 id=section1>AVL Trees</h2>
+
+<h3>What are AVL trees?</h3>
+
+<p>AVL trees are a self-balancing binary search tree. It was the first such data structure to be invented. In an AVL tree, the heights of the two child subtrees of any node differ by at most one; if at any time they differ by more than one, rebalancing is done to restore this property.<p>
+
+<p>Our tree can be in one or two states balanced or unbalanced. In a balanced tree the difference between the height of the left and right subtrees. Should be less than or equal to 1. Remember that binary search trees run in logarithmic time this is only if the tree is balanced.<p>
+
+<p>As a tree becomes more unbalance their operations slow down and in the worst case scencario. Where a tree looks like a linked list so it will be running in O(n). Self balancing trees solve this problem they automatically balance themselves as we add or remove nodes.</p>
+
+<h3>Rotations</h3>
+
+<p>In AVL trees we have four types of rotations:</p>
+
+<ul>
+    <li>Left Rotation</li>
+    <li>Right Rotation</li>
+    <li>Left Right Rotation</li>
+    <li>Right Left Rotation</li>
+</ul>
+
+<a href="#home">Top</a>
