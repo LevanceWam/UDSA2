@@ -1,2 +1,123 @@
 This is the notes for ExerciseImplementingRotations
 
+Now it is time to talk about rotations
+10 
+    20
+        30
+
+Here we have a right skewed tree and we want to perform a left
+rotate on the 10
+after the rotation 20 is going to be our new route 
+so let's give it a label newroot 
+So we have 
+20 as the newroot and 10 as the old one
+
+so essentially this newroot is root.rightchild of the main root
+
+To perform the left rotate on the 10 we should essentially make the 10 the leftchild of the 20
+so we set newroot.leftchild to root 
+
+how ever it is possible that the 20 could have a leftchild
+so lets us 15 as an example so this is what we would be looking at
+
+10 root
+    20 newroot
+15      30
+
+If we want to bring the 10 down it is going to clash with the 15
+how would we solve this?
+
+we can simply make the 15 the right child of the 10 so like this 
+    20 newroot
+ 10    30 
+    15
+
+but going back to the other implementation 
+10 root
+    20 newroot
+15      30
+
+so before we bring the 10 down and assign it as the left child of the new root 
+we should get the exisiting leftchild of the root and assign it as the right child of the old root
+so root.right = newroot.left
+so when we execute this the tree is going to look like this
+10
+    15
+
+and when we run newroot.left = root
+we are going to set this subtree as the leftchild of the new root 
+and this is what we will end up with:
+    20 newroot
+ 10    30 
+    15
+
+We do something similar for the right side but that will be any extra challenge 
+
+there is one more thing we need to do as part of performing a rotation
+and that is to reset the height
+this is because after we do the rotate of anykind the 
+heights need to change because the height has changed 
+
+One last thing as part of performing rotations the root is going to change so 
+we are going to have to figure out how to return the new root
+
+this is what we need to do we need to create 2 methods rotateleft and rotateright 
+both of these methods should take a node and return a node 
+then in the balance method instead of printing the messages we are going to call the rotate methods in 
+the right spot and return a new root 
+
+then reassign the root agrument to the object that is returned from the balance method 
+
+solution:
+
+first we are going to want to create the rotateLeft and rotateRight method
+we pass the parameter of root 
+we are going to start with rotateLeft first 
+
+first we need to get a reference to the rightChild of the root node and call it 
+the newroot
+so we set newroot = root.rightChild
+
+next we are going to implement the rotations 
+
+so we set root.rightChild = newroot.leftchild
+next we are going to let newroot.leftchild to root
+
+now we to reset the height of these two nodes
+
+to make this easier on us and to make the code less bulky
+we are going to move the height logic into its own private 
+method. we are doing this because we already used this code else where
+
+now we call our new method twice once for the root and the other for 
+the newroot
+
+finally we need to return the new root and that is the end of the method 
+now we do something similar to the rightrotate 
+
+now back in the balance method we need to replace all of 
+the console log lines with the calls for our rotation method 
+
+so starting with the isLeftHeavy if statement in the balancefactor if statement 
+we are going to call the leftrotate method and pass the root.leftchild as an arguement 
+and remember if we call a left rotate here we have to finish 
+with a rightrotate and we pass the root node as an agrument 
+
+now we do the same for the isRightHeavy if statement 
+
+mow we know when performing these rotations we're going to get a new route so we should 
+return that new route from our balance method 
+
+so what we should do is when we do in the balance method in the isRightHeavy and isLeftHeavy statements
+we are going to return the final rotation in each so this stops any other code from being executed
+
+if we get pass these two statements that means the root is balance 
+and we do not have to rotate so we are just going to return the root
+
+now back inside of the balancefactor statements if we do these first rotations we 
+get a new root so we are going to set root.right or left to the 
+respected statement 
+
+back to the insert method we need to return the balance.root method now
+
+we are going to download video

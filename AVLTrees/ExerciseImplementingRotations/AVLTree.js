@@ -39,22 +39,22 @@ class AVLTree {
             root.rightChild = this[insertAlgorithm](root.rightChild, value);
         }
 
-        setHeight(root);
+        this[setHeight](root);
 
         return this[balance](root);
-        }
+    }
 
     [balance](root){        
         if (this[isLeftHeavy](root)) {
-            if (this[balanceFactorAlgorithm](root.rightChild) < 0)
-            root.leftChild = rotateLeft(root.leftChild);
-            return rotateRight(root);
+            if (this[balanceFactorAlgorithm](root.leftChild) < 0)
+                root.leftChild = this[rotateLeft](root.leftChild);
+            return this[rotateRight](root);
         }
 
         if (this[isRightHeavy](root)) {
             if (this[balanceFactorAlgorithm](root.rightChild) > 0)
-                root.rightChild = rotateLeft(root.rightChild);
-            return rotateRight(root);
+                root.rightChild = this[rotateRight](root.rightChild);
+            return this[rotateLeft](root);
         }
 
         return root;
@@ -66,8 +66,8 @@ class AVLTree {
         root.rightChild = newRoot.leftChild;
         newRoot.leftChild = root;
 
-        setHeight(root);
-        setHeight(newRoot);
+        this[setHeight](root);
+        this[setHeight](newRoot);
 
         return newRoot
     }
@@ -78,8 +78,8 @@ class AVLTree {
         root.leftChild = newRoot.rightChild;
         newRoot.rightChild = root;
 
-        setHeight(root);
-        setHeight(newRoot);
+        this[setHeight](root);
+        this[setHeight](newRoot);
 
         return newRoot
     }
@@ -110,6 +110,6 @@ class AVLTree {
 const tree = new AVLTree();
 
 tree.insert(10);
-tree.insert(30);
 tree.insert(20);
+tree.insert(30);
 console.log(tree.root)
