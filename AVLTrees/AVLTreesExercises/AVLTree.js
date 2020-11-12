@@ -7,6 +7,18 @@ class TreeNode {
     }
 }
 
+/*********************** Private Members ********************************/
+
+/*
+* In ES6 we have a primitive type called symbol
+* A symbol is a function we call to generate a symbol
+* A symbol is essentially a unqiue indentifier everytime we call this function we get a new unqiue identifier.
+* if we compare a symbol to a symbol we will get false because they are not the same 
+* everytime we call a symbol function we get a new, unqiue value
+* we can use this unqiue value as the property name for an object
+* We are using these private members to follow the rules of abstraction.
+*/
+
 const insertAlgorithm = Symbol();
 const heightAlgorithm = Symbol()
 const isLeftHeavy = Symbol();
@@ -37,6 +49,10 @@ class AVLTree {
         this.root = root;
         this.size = 0;
     }
+
+     /*********************** Public Methods ********************************/
+
+
 
     insert(value){
         this.root = this[insertAlgorithm](this.root, value);
@@ -147,6 +163,10 @@ class AVLTree {
        console.log(array)
     }
 
+
+     /*********************** Private Methods ********************************/
+
+
     [insertAlgorithm](root, value){
         let newNode = new TreeNode(value);
 
@@ -253,43 +273,43 @@ class AVLTree {
          console.log(root.value);
          this[PreOrderAlgorithm](root.leftChild);
          this[PreOrderAlgorithm](root.rightChild);
-     }
+    }
 
-     [InOrderAlgorithm](root){
+    [InOrderAlgorithm](root){
         if (root == null ) return;
 
         this[InOrderAlgorithm](root.leftChild);
         console.log(root.value);
         this[InOrderAlgorithm](root.rightChild);
-     }
+    }
 
-     [PostOrderAlgorithm](root){
+    [PostOrderAlgorithm](root){
         if (root == null ) return;
 
         this[PostOrderAlgorithm](root.leftChild);
         this[PostOrderAlgorithm](root.rightChild);
         console.log(root.value);
-     }
+    }
 
-     [minimumAlgorithm](root){
+    [minimumAlgorithm](root){
         if (this[isLeaf](root)) return root.value;
 
         let left = this[minimumAlgorithm](root.leftChild);
         let right = this[minimumAlgorithm](root.rightChild);
 
         return Math.min(Math.min(left, right), root.value);
-     }
+    }
 
-     [maximumAlgorithm](root){
+    [maximumAlgorithm](root){
         if (this[isLeaf](root)) return root.value;
 
         let left = this[maximumAlgorithm](root.leftChild);
         let right = this[maximumAlgorithm](root.rightChild);
 
         return Math.max(Math.max(left, right), root.value);
-     }
+    }
 
-     [equalsAlgorithm](first,second){
+    [equalsAlgorithm](first,second){
         if (first == null && second == null) return true;
 
         if(first != null && second != null) {
@@ -299,16 +319,16 @@ class AVLTree {
         }
 
         return false;
-     }
+    }
 
-     [countLeavesAlgorithm](root){
+    [countLeavesAlgorithm](root){
         if (root == null) return 0;
         if (root.leftChild == null && root.rightChild == null) return 1;
         
         return this[countLeavesAlgorithm](root.leftChild) + this[countLeavesAlgorithm](root.rightChild);
-     }
+    }
 
-     [containsAlgorithm](root, value){
+    [containsAlgorithm](root, value){
          if (root == null) return false;
          
          if(root != null){
@@ -316,18 +336,18 @@ class AVLTree {
              || this[containsAlgorithm](root.leftChild,value)
              || this[containsAlgorithm](root.rightChild,value);
          }
-     }
+    }
 
-     [isBinaryAlgorithm](root, min, max){
+    [isBinaryAlgorithm](root, min, max){
         if (root == null) return true;
 
         if (root.value < min || root.value > max) return false;
 
         return this[isBinaryAlgorithm](root.leftChild, min, root.value - 1)
                 && this[isBinaryAlgorithm](root.rightChild, root.value + 1, max);
-     }
+    }
 
-     [kDistanceAlgorithm](root, distance,list){
+    [kDistanceAlgorithm](root, distance,list){
         if (root == null) return;
         if (distance == 0) {
             list.push(root.value);
@@ -336,9 +356,9 @@ class AVLTree {
 
         this[kDistanceAlgorithm](root.leftChild, distance-1,list);
         this[kDistanceAlgorithm](root.rightChild, distance-1,list);
-     }
+    }
 
-     [areSiblingAlgorithm](root, first, second){
+    [areSiblingAlgorithm](root, first, second){
          if (root.leftChild == null && root.rightChild == null) return false;
 
          let left = root.leftChild.value;
@@ -347,9 +367,9 @@ class AVLTree {
          return first == left && second == right
          || this[areSiblingAlgorithm](root.leftChild, first, second)
          || this[areSiblingAlgorithm](root.rightChild, first, second);
-     }
+    }
 
-     [getAncestorsAlgorithm](root, value, array){
+    [getAncestorsAlgorithm](root, value, array){
          if (root == null) return;
          if(!this.contains(value)) throw new Error('This number is not in the tree');
 
@@ -364,20 +384,12 @@ class AVLTree {
             }
             return;
          }
-     }
+    }
 
-     [isLeaf](node){
+    [isLeaf](node){
          return (node.leftChild == null || node.rightChild == null);
-     }
+    }
 
 }
-
-const tree = new AVLTree();
-
-tree.insert(10);
-tree.insert(20);
-tree.insert(30);
-
-console.log(tree.maxBinSearch())
 
 module.exports = AVLTree;
