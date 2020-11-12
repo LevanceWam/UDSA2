@@ -17,6 +17,7 @@ const rotateLeft = Symbol();
 const rotateRight = Symbol();
 const setHeight = Symbol();
 const nodesOnLevel = Symbol();
+const isBalancedAlgorithm = Symbol();
 
 class AVLTree {
     constructor(root=null){
@@ -30,7 +31,11 @@ class AVLTree {
     }
 
     isPerfect(){
-        return this[nodesOnLevel]() == this.size;
+        return this[nodesOnLevel](this.root) == this.size;
+    }
+
+    isBalanced(){
+        return this[isBalancedAlgorithm](this.root);
     }
 
     [insertAlgorithm](root, value){
@@ -110,26 +115,30 @@ class AVLTree {
         return (node == null) ? 0 : this[heightAlgorithm](node.leftChild) - this[heightAlgorithm](node.rightChild);
     }
 
-    [nodesOnLevel](){
+    [nodesOnLevel](root){
        let count = 1; 
        let multiplier = 2;
 
-       if (this.root.height == 0) return 1;
+       if (root.height == 0) return 1;
 
-       for (let i = 0; i < this.root.height; i++){
+       for (let i = 0; i < root.height; i++){
            count += multiplier;
            multiplier*=2;
         }
         return count;
     }
 
+    [isBalancedAlgorithm](root){
+        if (root == null) return;
+
+        if (this[balanceFactorAlgorithm](root) <= 1 && this[balanceFactorAlgorithm](root) >= -1) return true;
+        this[isBalancedAlgorithm](root.leftChild);
+        this[isBalancedAlgorithm](root.rightChild);
+
+        return false;
+    }
+
 
 }
 
-const tree = new AVLTree();
-
-tree.insert(10);
-tree.insert(20);
-tree.insert(30);
-
-console.log(tree.isPerfect());
+module.exports = AVLTree;
