@@ -65,4 +65,19 @@
 
 <h2 id=section1>Heaps</h2>
 
-<p>Heaps are another type of binary tree. Heaps have many applications that are used in sorting. They're used in many graph algorithms and other things. </p>
+<p>Heaps are another type of binary tree. Heaps have many applications that are used in sorting. They're used in many graph algorithms and other things.</p>
+
+<p>A heap is a special type of tree with 2 properties. The first property is that it is a complete tree which means that every level, expect potentially the last level is completely filled, and the level are filled from left to the right. This leaves us with a completed tree because every level is completely filled with nodes.</p>
+
+<p>The second property of a heap is that the value of every node is greater than or equal to it's children. This is called the heat property. For example if we have 20 as the root, the child should be less than or equal to the root. So we can have nodes like 15 and 10 because this follows the rule of the tree. The same rule would apply to the children of 10 and 15. Now let's say we had the value of 21 in the tree. Now we don't have a valid tree because 21 is greater than 20.</p>
+
+<p>When the Main root node holds the largest value and has smaller values as we go down. We call this a max heap. We also have min heaps where the main root stores the smallest value.</p>
+
+<p>We can use heaps for sorting (heapsort),They are also used in implementing graph algorithms, We can use graphs to find the shortest path between 2 nodes in a graph. This is the algorithm that powers our gps. Heaps are also used for priority queues. We can also use them to find the kth smallest or largest value which is a popular interview question.</p>
+
+<h4>Heaps Operations & Runtime Complexities</h4>
+
+<ul>
+    <li>Bubbling Up O(log n)</li>
+    <li>Bubbling down O(log n)</li>
+</ul>
