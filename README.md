@@ -62,3 +62,7 @@
 </ul>
 
 <a href="#home">Top</a>
+
+<h2 id=section1>Heaps</h2>
+
+<p>Heaps are another type of binary tree. Heaps have many applications that are used in sorting. They're used in many graph algorithms and other things. </p>
