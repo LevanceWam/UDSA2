@@ -1,0 +1,50 @@
+This is the notes for ExerciseBuildingAHeap
+
+Lets try to implement a heap. We normally use an array to implement a heap
+even though a heap is conceptually binary tree. But because 
+heaps are complete binary treea and we don't have holes in them 
+it is more efficient to store them in a array 
+
+To implement them using a array we can simply store these values
+in a array so we dont need a node class with fields for left and right children
+so our heap is going to have a smaller footprint in memory
+
+so if we have a heap with 5 items (look to the screenshot)
+we can store the items at these indexes
+So from the top root we start at 0 then from left to right go 
+1 2 3 4 
+
+now for the bubbling up and bubbling down operations 
+we need to be able to find the children or the parent of a node 
+lets see how to do this 
+
+so if we look at the index of 10 and compare it to the index of its children
+what is the relationship?
+
+if we multiply 1 by 2 and then add the 1 to it we get the index of the left children
+or if we multiply 1 by 2 and then add 2 to it we get the index of the right track
+
+Here are the formulas for calculating the index of the right and left children
+Left = parent * 2 + 1
+right = parent * 2 + 2
+
+How can we find the parent of the node?
+let's look at the indexes again
+how do we get to 1 from 3 well we subtract 3-1 and then divide by 2
+here is the formula to calculate the index of a parent node :
+parent = (index-1) / 2
+
+
+so this is what we need to do we need to create a heap class and we need to use a array to store 
+a list of intergers and implement to operations 
+
+Insert:
+gets a interger 
+
+Remove:
+removes the root node 
+
+remember when we implement these operations we need to bubbel up or down a value 
+
+solution:
+
