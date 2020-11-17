@@ -48,3 +48,63 @@ remember when we implement these operations we need to bubble up or down a value
 
 solution:
 
+Part 1 insert method:
+first we need to create the heap class and set some private varibles 
+we need to set one for the array we plan on using
+
+we need to had a size field to keep track of the number of items in the heap
+because later when we implement the remove operation we're simply going to 
+decrease the value of the size 
+
+we're not going to physically remove our items from the array
+
+so next we are going to want to create the insert method with the parameter of value 
+we are going to want to store the value to the next available spot 
+so we are going to set array of size to the value:
+array[size++] = value 
+here the size count is going to indecate where we are going to store the value at
+so if the first number we store is 1 it will have a index of 0 because the size is zero
+
+(It is important to note that this style of programming is something we picked up 
+while looking at java code because in java arrays have limits 
+JS doesn't because it is dynamic if )
+
+This is how we are going to store the item in the next available slot now we are going to work
+on the bubble up operation if the item is greater than the parent
+that means we should bubble up this item until it is in the right 
+position
+
+next we need to calculate the index which is size minus 1 
+
+while we are here we also need to calculate the parent index
+which is index - 1 / 2 
+we also need to wrap this equation inside of a math.floor  function 
+this is because some of the indexes will return a float and indexes are not stored at floats
+
+(and remember The Math. floor method is used to round off the number passed
+ as a parameter to its nearest integer in 
+Downward direction of rounding i.e. towards the lesser value.)
+
+now we are going to need a while statement 
+now as long as the item at the current index is greater than the item at the parent index 
+we are going to have to swap those items 
+
+now we need to implement a swap method we are going to make this a seperate private method 
+outside of the insert method because we do not want to make it super bulky
+
+so we intialize swap with the parameters of first and second to represent the indexes
+then we create the swap method 
+we create a variable called temp this will hold the value of the first index
+next we are going to copy the second item into the first item
+finally what ever is in the temp we are going to copy it into the second item 
+
+Back in the while statement in the insert method
+now if the item in the current index is greater than the parent index we need to swap them
+so we execute swap with the index and the parent index as parameters
+
+now we need to set the index to the parent index
+this way if the item is still greater than the new parent we can swap it in the next iteration
+
+now we finish this is our bubbleup method lets move it inside of its own private method to make the code
+cleaner
+next we are going to call the bubbleup method in the insert method

@@ -10,11 +10,13 @@ class Heap {
     constructor(){
         // We don't want outside access to the array should not be accessible 
         _array.set(this, []);
+        // we are going to use size to keep track of the number of items in the heap
         this.size = 0;
     }
 
     insert(value){
-        // push the value into the heap
+        // We want to store the value in the next available spot 
+        // so we will have size as a index counter and we are going to increment it everytime we insert a new value
         _array.get(this)[this.size++] = value;
 
         // get returned value from here
@@ -23,20 +25,18 @@ class Heap {
     }
 
     [bubbleUp](){
-        // we created a place holder to hold the value of the node if it need to be switched.
-
         /**
-         * we need to traverse through the array and check the new value 
-         * against the current values in the array
-         * if the new value is larger than the value currently occupying the index
-         * we are to store the old value in the placeholder and overwrite the index
-         * to store the new value
-         * finally we are going to set the value of node to whats being stored in the placeholder
-         * we continue this process until we hit the end of array
+         * if the item is greater than the parent
+         * that means we should bubble up this item until it is in the right position
          */ 
 
+         // This gives us the exact index of an item
         let index = this.size - 1;
 
+        /**
+         * While the index is greater than 0 and if the item at the current index is greater than its 
+         * parent item we are going to have to swap the items until they are at the right position
+         */
         while (index > 0 && _array.get(this)[index] > _array.get(this)[this[parentNode](index)]){
             this[swap](index, this[parentNode](index));
             index = this[parentNode](index);
@@ -55,6 +55,7 @@ class Heap {
 
     [parentNode](index){
         // this is the formula to find the parent node 
+        // we are using math.floor here because some of the numbers return a float and arrays don't use floats as indexes
         return Math.floor((index -1) / 2) ;
     }
 
