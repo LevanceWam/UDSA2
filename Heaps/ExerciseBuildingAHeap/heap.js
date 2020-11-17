@@ -14,8 +14,8 @@ class Heap {
     }
 
     insert(value){
-         // push the value into the heap
-         _array.get(this)[this.size++] = value;
+        // push the value into the heap
+        _array.get(this)[this.size++] = value;
 
         // get returned value from here
         this[bubbleUp]();
@@ -53,17 +53,13 @@ class Heap {
         return (_array.get(this).length == 0);
     }
 
-    [getLength](){
-        // returns the length of the heap 
-        return _array.get(this).length;
-    }
-
     [parentNode](index){
-        
+        // this is the formula to find the parent node 
         return Math.floor((index -1) / 2) ;
     }
 
     [swap](first, second){
+        // This swap function switches the value of the child node with the parent node if the parent node is less than child 
         let temp = _array.get(this)[first];
         _array.get(this)[first] = _array.get(this)[second];
         _array.get(this)[second] = temp;
