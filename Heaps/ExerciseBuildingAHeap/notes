@@ -108,3 +108,28 @@ this way if the item is still greater than the new parent we can swap it in the 
 now we finish this is our bubbleup method lets move it inside of its own private method to make the code
 cleaner
 next we are going to call the bubbleup method in the insert method
+
+Part 2 
+Remove method:
+We are going to move on to the remove operation
+This one is a little more tricky because there are a few edge cases and we need to acoount for it 
+
+so we are going to declare the remove method with no parameters 
+this is because we are always going to be removing the root node which holds the largest 
+value. 
+
+The first thing we need to do is move the last node into the root node
+once we do that we are going to decrement the size by one.
+
+We can code it all into one line to make it easier on us
+
+now once we remove the item we need to execute the bubble down operation
+after we removed the item 
+
+if the item is smaller than its childern then we need to keep doing this until we are in the right position
+we are going to need a while loop
+we are going to want to create a index variable and set it to 0 this is going to change every iteration
+while this item[index] < children we are going to swap the values 
+
+we are going to need to create 2 private methods to calculate the left and right child  
+

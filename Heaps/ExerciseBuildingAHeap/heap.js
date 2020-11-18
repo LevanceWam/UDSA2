@@ -4,6 +4,13 @@ const bubbleDown = Symbol();
 const getLength = Symbol();
 const swap = Symbol();
 const parentNode = Symbol();
+const leftChildIndex = Symbol();
+const rightChildIndex = Symbol();
+const leftChild = Symbol();
+const rightChild = Symbol();
+const largerChildIndex = Symbol();
+const isValidParent = Symbol();
+
 
 
 class Heap {
@@ -22,6 +29,15 @@ class Heap {
         // get returned value from here
         this[bubbleUp]();
 
+    }
+
+    remove(){
+        if(this.isEmpty()) throw new Error('Heap is empty')
+
+        // we are setting the last node to the root of the heap and decrementing the size 
+        _array.get(this)[0] = _array.get(this)[--this.size];
+
+        this[bubbleDown]();
     }
 
     [bubbleUp](){
@@ -44,13 +60,48 @@ class Heap {
 
     }
 
+    [bubbleDown](){
+        let index = 0;
+        while(index <= this.size && !this[isValidParent](index)){
+            let largerChild = this[largerChildIndex](index);
+            this[swap](index, largerChild);
+            index = largerChild;
+        }   
+    }
+
+    [largerChildIndex](index){
+        return (this[leftChild](index) > this[rightChild](index)) ?
+        this[leftChildIndex](index):
+        this[rightChildIndex](index);
+    }
+
+    [isValidParent](index){
+        return _array.get(this)[index] >= this[leftChild](index) && 
+        _array.get(this)[index] >= this[rightChild](index);
+    }
+
+    [rightChild](index){
+        return  _array.get(this)[this[rightChildIndex](index)] 
+    }
+
+    [leftChild](index){
+        return  _array.get(this)[this[leftChildIndex](index)] 
+    }
+
+    [leftChildIndex](index){
+        return index * 2 + 1;
+    }
+
+    [rightChildIndex](index){
+        return index * 2 + 2;
+    }
+
     getHeap(){
         console.log(_array.get(this))
     }
 
     isEmpty(){
-        // Check to see if the heap is empty.
-        return (_array.get(this).length == 0);
+        return this.size == 0;
     }
 
     [parentNode](index){
@@ -75,4 +126,5 @@ heap.insert(5);
 heap.insert(17);
 heap.insert(4);
 heap.insert(22);
+heap.remove();
 heap.getHeap();
