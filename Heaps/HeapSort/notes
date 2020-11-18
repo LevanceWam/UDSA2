@@ -1,0 +1,37 @@
+This is the notes for HeapSort
+
+One of the applications of the heap data structure is to 
+sort data.
+
+so lets say we have a interger array with a bunch of random numbers
+
+we can use the heap class to sort the array
+so we create a heap object
+we are going to loop over the array and add each number in the array
+
+now that we finished looping the values in the array 
+we need to note something here
+
+This heap that we currently have is a maxheap so the root node holds the 
+largest value which is 10
+if we remove 10 the next greatest value will be 5
+
+this means that if we keep removing these numbers from the heap they are going to come out in descending order
+
+lets try it out!
+so while the heap is not empty we are going to console log the removed items from the heap
+
+now instead of a while loop we can use a for loop and modify the element in the array
+
+so we create a basic for loop
+we are going to stop it when i is greater than numbers.length and 
+increment the i
+
+in each iteration set numbers[i] (this reads numbers of i) = heap.remove()
+
+now the array is sorted in descending order 
+lets console it out 
+
+now lets try to make it in ascending order 
+
+this is one of the applications of heaps 
