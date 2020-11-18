@@ -8,6 +8,8 @@ const leftChildIndex = Symbol();
 const rightChildIndex = Symbol();
 const leftChild = Symbol();
 const rightChild = Symbol();
+const hasLeftChild = Symbol();
+const hasRightChild = Symbol();
 const largerChildIndex = Symbol();
 const isValidParent = Symbol();
 
@@ -34,10 +36,12 @@ class Heap {
     remove(){
         if(this.isEmpty()) throw new Error('Heap is empty')
 
+        let root = _array.get(this)[0];
         // we are setting the last node to the root of the heap and decrementing the size 
         _array.get(this)[0] = _array.get(this)[--this.size];
 
         this[bubbleDown]();
+        return root;
     }
 
     [bubbleUp](){
@@ -70,14 +74,30 @@ class Heap {
     }
 
     [largerChildIndex](index){
+        if (!this[hasLeftChild](index)) return index;
+        if (!this[hasRightChild](index)) return this[leftChildIndex](index);
+
         return (this[leftChild](index) > this[rightChild](index)) ?
         this[leftChildIndex](index):
         this[rightChildIndex](index);
     }
 
+    [hasLeftChild](index){
+        return this[leftChildIndex](index) <= this.size;
+    }
+
+    [hasRightChild](index){
+        return this[rightChildIndex](index) <= this.size;
+    }
+
     [isValidParent](index){
-        return _array.get(this)[index] >= this[leftChild](index) && 
-        _array.get(this)[index] >= this[rightChild](index);
+        if (!this[hasLeftChild](index)) return true;
+
+        let isValid = _array.get(this)[index] >= this[leftChild](index);
+
+        if (this[hasRightChild](index)) isValid &= _array.get(this)[index] >= this[rightChild](index);
+
+        return isValid;
     }
 
     [rightChild](index){
@@ -126,5 +146,6 @@ heap.insert(5);
 heap.insert(17);
 heap.insert(4);
 heap.insert(22);
+heap.remove();
 heap.remove();
 heap.getHeap();

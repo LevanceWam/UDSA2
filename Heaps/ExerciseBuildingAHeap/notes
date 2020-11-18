@@ -132,4 +132,41 @@ we are going to want to create a index variable and set it to 0 this is going to
 while this item[index] < children we are going to swap the values 
 
 we are going to need to create 2 private methods to calculate the left and right child  
+then we are going to write the following private methods:
+
+first we are going to write two private methods that return the value of the left and right children
+this will help the readability of the code 
+
+then we are going to make another private method called isValidParent 
+this method will check to see if the the current index is the valid child to the parent index
+this will also help with the readability of our code.
+
+now if the index of the child does not belong to the parent node we are going to have to 
+run the swap operation but their is a small problem on which value are we going to swap
+so we have to make another method that gets the larger index and returns that 
+we will call this method the largerChildIndex
+
+now back in the bubbledown method we are going to write a while statement to handle the rest of the code 
+while index is less than or equal to the size an isValidParent is false 
+we are going to swap the current index with the largerchild index 
+we are then going copy the index of the largerchild into the index for the next iteration
+
+and to end it off we are going to write a conditional for if the heap is empty to throw a error.
+
+part 3 edge cases:
+
+Now we have our implementation of the remove method 
+there is a tiny issue in the two methods
+
+largerChildIndex and isValidParent
+
+Lets tackle the largerChildIndex first 
+In this method we have a simple expression to return the index of the larger child 
+However the node might not have any children or might only have a left or a right child 
+so we need to handle these scenarios here 
+how do we know if a node has a left or a write child?
+we get the index of the left or right child and make sure that its value is less than or equal to the number 
+of items in the heap so its a valid index.
+
+So lets create another helper method 
 
