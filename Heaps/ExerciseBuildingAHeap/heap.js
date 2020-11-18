@@ -1,7 +1,6 @@
 const _array = new WeakMap();
 const bubbleUp = Symbol();
 const bubbleDown = Symbol();
-const getLength = Symbol();
 const swap = Symbol();
 const parentNode = Symbol();
 const leftChildIndex = Symbol();
@@ -34,13 +33,21 @@ class Heap {
     }
 
     remove(){
+        //if the heap is empty notify the user.
         if(this.isEmpty()) throw new Error('Heap is empty')
 
+        // we are going to store the old root so we can return it later
         let root = _array.get(this)[0];
+
         // we are setting the last node to the root of the heap and decrementing the size 
         _array.get(this)[0] = _array.get(this)[--this.size];
 
+        // will move the node from the last index to the correct spot in the heap
         this[bubbleDown]();
+
+        // we have to remove the last node that was moved to the root node before we started bubbling 
+        _array.get(this).pop();
+
         return root;
     }
 
@@ -65,7 +72,17 @@ class Heap {
     }
 
     [bubbleDown](){
+        /**
+         * if the item is less than the children
+         * that means we should bubble down this item until it is in the right position
+         */
+
+        // we created this variable to keep track of where we are in the array
+        // after every iteration it will go up and we want to compare it to the size so it know when to stop
         let index = 0;
+
+        // while index <= size and isValidParent is false we are going to swap the current 
+        // index with the larger index and then copy the index of the larger child into the current index to continue from there 
         while(index <= this.size && !this[isValidParent](index)){
             let largerChild = this[largerChildIndex](index);
             this[swap](index, largerChild);
@@ -74,45 +91,59 @@ class Heap {
     }
 
     [largerChildIndex](index){
+        // Here we are going to see if there is a left child if not return the index
         if (!this[hasLeftChild](index)) return index;
+
+        // check to see if there is a right child if not return the leftchild because it is the greater one.
         if (!this[hasRightChild](index)) return this[leftChildIndex](index);
 
+        // if the left and right child are here we are going to return the larger value 
         return (this[leftChild](index) > this[rightChild](index)) ?
         this[leftChildIndex](index):
         this[rightChildIndex](index);
     }
 
     [hasLeftChild](index){
+        // Helper method to check to see if we have a right child 
         return this[leftChildIndex](index) <= this.size;
     }
 
     [hasRightChild](index){
+        // Helper method to check to see if we have a right child 
         return this[rightChildIndex](index) <= this.size;
     }
 
     [isValidParent](index){
+        // if we do not have a left child this means the node is valid 
         if (!this[hasLeftChild](index)) return true;
 
+        // this will store the value of the node that is greater the current node or the left child
         let isValid = _array.get(this)[index] >= this[leftChild](index);
 
+        // we want to make sure that the value of the current node is greater than or equal to its right child 
         if (this[hasRightChild](index)) isValid &= _array.get(this)[index] >= this[rightChild](index);
 
+        // return the value 
         return isValid;
     }
 
     [rightChild](index){
-        return  _array.get(this)[this[rightChildIndex](index)] 
+        // Helper method that returns true or false on whether this is the right child of a parent index
+        return _array.get(this)[this[rightChildIndex](index)];
     }
 
     [leftChild](index){
-        return  _array.get(this)[this[leftChildIndex](index)] 
+        // Helper method that returns true or false on whether this is the left child of a parent index
+        return _array.get(this)[this[leftChildIndex](index)];
     }
 
     [leftChildIndex](index){
+        // formula for the calculating the parent index left child index
         return index * 2 + 1;
     }
 
     [rightChildIndex](index){
+        // formula for the calculating the parent index right child index
         return index * 2 + 2;
     }
 
@@ -139,13 +170,4 @@ class Heap {
     }
 }
 
-const heap = new Heap();
-
-heap.insert(10);
-heap.insert(5);
-heap.insert(17);
-heap.insert(4);
-heap.insert(22);
-heap.remove();
-heap.remove();
-heap.getHeap();
+module.exports = Heap;

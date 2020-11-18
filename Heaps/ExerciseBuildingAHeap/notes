@@ -168,5 +168,60 @@ how do we know if a node has a left or a write child?
 we get the index of the left or right child and make sure that its value is less than or equal to the number 
 of items in the heap so its a valid index.
 
-So lets create another helper method 
+So lets create another helper methods
+hasLeftChild & hasRightChild this takes the index as a parameter
+ans we are going to return if the right or left child index is less than or equal to the size
 
+back to the largerChildIndex method 
+we want to check to see if we have a left child first 
+if we dont have one this means that this node doesn't have any children 
+because we always fill the heap from left to right
+so if the left child is not here we are going to return the same index
+
+Next if we do not have a right child this means that the left child is the greater one so we are going to return the 
+left child index
+
+the reason why we are doing this is because our array of items is intialize with zeros
+so we can not rely on the ternary expression to determine the index of the larger child
+
+so this is why we are checking to see if we have left and right children 
+otherwise we head to the ternary expression and we compare the left and right children
+and return the index of the larger child.
+
+Part 3.5 IsValidParent method:
+
+again where we left off we where assuming that the node has 2 children 
+we are going to expand the logic and work on the scenarios where if the node doesnt have any children or only has a left
+child
+
+if we do not have a left child then we are going to return true because this is the valid node
+
+next we are going to check if we have a right child
+if we dont have one we want to make sure that the value of this node is greater than or 
+equal to the left child
+
+so if we don't have a right child then we return the value of this expression:
+_array.get(this)[index] >= this[leftChild](index);
+
+otherwise if we make it to the return statement this means that the node has 2 children so 
+we have to make sure that the value of this node is greater than both of the children 
+
+now we notice that we duplicated a expression in 2 places ao 
+we are going to restructure 
+
+if the !hasLeftChild statemtent is false this means we have a left child 
+so the value if the current node should definitely be greater than or equal to left child
+
+so we declare a variable called isValid and store _array.get(this)[index] >= this[leftChild](index);
+in it so:
+isValid: _array.get(this)[index] >= this[leftChild](index);
+
+so we are going to reverse the condition of the right child we want to make sure that the value of the 
+current node is greater than or equal to its right child 
+
+so we are going to set isValid = isValid & _array.get(this)[index] >= this[rightChild](index)
+
+then we return the value of isValid 
+
+we can simply the expression we have for the hasRightChildren by using 
+the augumented assignment operator
