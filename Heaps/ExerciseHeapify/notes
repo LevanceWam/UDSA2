@@ -43,3 +43,31 @@ if we made it to this point we are going to call the swap method to swap the val
 because the value at index was not in the right position and we are moving the correct value to the correct index
 finally we are going to call this function recursively and pass the array and the largerIndex (that has the index that is not in the correct position)
 and continue throughout the rest of the array.
+
+now we are going to optimize the code to make it a little better
+
+solution 2 Optimization:
+lets take a look into how we could optimize our heapifyAlgorithm
+if we take a look at our screen shot we can see that we have a perfect binary tree
+with 4 leaf nodes at the bottom 
+
+mathimatically we can prove this in a perfect binary tree that half of the nodes are in the last level
+this matters beecause in the heapify method we are iterating over the entire array and 
+keep heapifying every item
+
+the purpose of this method is to ensure that every parent is greater than or equal to its children so techincally 
+we dont have to perform the operation for the leaf nodes which happen to be half of the nodes in this tree
+
+so to optimize this algorithm we only need to heapify the parent nodes 
+so ti find the nodes we are going to take the number of nodes in the heap divide this by 2 and -1
+we are going to wrap this in a math.floor function because some numbers return a float and we can not work with floats as an index
+
+so we are going to store the result of this equation in a variable called lastparent index
+and set the i in the for loop to this value and then change the rest of the requirements in the loop
+we are going to make sure this for loop runs as long as i is >= 0 and we are going to decrement this every iteration 
+
+To break this down a little bit further 
+What we are doing is heapifying the parent nodes only in the array instead of having to visit every item in the array
+we calculated this by looking at how many nodes are in the heap and then dividing it by 2 and subtracting by one
+that way we only visit the nodes with children.
+this will make few recursions as well 

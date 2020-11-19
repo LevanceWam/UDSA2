@@ -7,7 +7,8 @@ class MaxHeap {
     constructor(){}
 
     heapify(array){
-        for(let i =0; i < array.length; i++){
+        let lastParentIndex = Math.floor(array.length / 2 - 1);
+        for(let i = lastParentIndex; i >= 0; i--){
             this[heapifyAlgorithm](array,i);
         }
     }
