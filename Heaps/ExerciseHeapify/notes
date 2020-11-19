@@ -1,0 +1,45 @@
+This is the notes for ExerciseHeapify
+
+One of the popular questions is to implement a heapify algorithm 
+heapify means to transform an array into a heap in place 
+
+for example:
+lets say we have a array of intergers 5, 3, 8, 4, 1, 2
+in a heap every node should be greater than or equal to its children
+
+Take a look at the 5 this is the root node. 5 is not greater than or equal to both of 
+its children so this node is violation the heap property
+
+so we need to design a function or a method 
+that takes an array and transforms it into heap in place 
+
+just to clear this up
+we needed to make the algorithm for the loop to come out like a heap
+
+
+solution:
+
+we are going to start by making a class and creating a public method called 
+heapify this method takes an array as a parameter.
+
+Inside of the heapify method we are going to want to create a for loop that stops at the length of the array we are passing 
+in side of the for loop we are going to call a private method called heapifyAlgorithm and give it the parameters of the array and the variable i for the for loop.
+
+now we need to create the heapify heapifyAlgorithm
+first we create the private method and give it the parameters array and index
+
+first we are going to start by creating a variable called  largerindex and set it to the 
+index parameter
+
+we need to compare this largerIndex to it's children the leftIndex and the rightIndex
+to see which one has the larger value if  any of the children has a greater value we are going to copy that index into the largerIndex
+we also have to keep this though in the back of our heads we do not want the index of to go out of the array 
+so we need to make sure that the left and right indexes are smaller than the arrays length
+
+We need to set another condition too if the index and the largerIndex are the same then the index value is in the right position so we do not need to move it
+so we return immediatelty
+
+if we made it to this point we are going to call the swap method to swap the values of index and largerIndex
+because the value at index was not in the right position and we are moving the correct value to the correct index
+finally we are going to call this function recursively and pass the array and the largerIndex (that has the index that is not in the correct position)
+and continue throughout the rest of the array.
