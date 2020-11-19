@@ -1,0 +1,21 @@
+This is the notes for PriorityQueues
+
+Earlier on the course we talked about priorty queues 
+remember priorty queues items get removed from the queue based 
+on their priorty not when they join the queue
+
+priorty queues are very popular.
+our operating systems uses priorty queues to schedule tasks 
+task that have a higher priority they will get executed first 
+
+in our implementation of the priority queue we have a new item we have to shift the 
+exisiting items to the right to open space for the new item
+remember that using the insert method time complexity is O(n) and deletes is O(1)
+
+we can use a heap to implement a priority queue
+the time complexity for insert in this case is O(log n) amd so is delete
+but the insert method is going to run a little faster than the delete
+this is becasue we are storing the item in the last leaf and if it is not in the right position 
+we might have to bubble it up the worse case scenario it will have to traverse the heap 
+
+moral of the story if we have a lot of insertions it is easier to use a PriorityQueues implemented with a heap
