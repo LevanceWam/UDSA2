@@ -7,6 +7,7 @@
 <h2>Table of Contents</h2>
 <li><a href='#section1'>Binary Trees</a></li>
 <li><a href='#section2'>AVL Trees</a></li>
+<li><a href='#section2'>Heaps</a></li>
 
 <h2 id=section1>Binary Trees</h2>
 
@@ -40,7 +41,7 @@
 
 <a href="#home">Top</a>
 
-<h2 id=section1>AVL Trees</h2>
+<h2 id=section2>AVL Trees</h2>
 
 <h3>What are AVL trees?</h3>
 
@@ -63,7 +64,7 @@
 
 <a href="#home">Top</a>
 
-<h2 id=section1>Heaps</h2>
+<h2 id=section3>Heaps</h2>
 
 <p>Heaps are another type of binary tree. Heaps have many applications that are used in sorting. They're used in many graph algorithms and other things. They can aslo be referred to as complete trees.</p>
 
