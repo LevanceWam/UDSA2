@@ -65,7 +65,7 @@
 
 <h2 id=section1>Heaps</h2>
 
-<p>Heaps are another type of binary tree. Heaps have many applications that are used in sorting. They're used in many graph algorithms and other things.</p>
+<p>Heaps are another type of binary tree. Heaps have many applications that are used in sorting. They're used in many graph algorithms and other things. They can aslo be referred to as complete trees.</p>
 
 <p>A heap is a special type of tree with 2 properties. The first property is that it is a complete tree which means that every level, expect potentially the last level is completely filled, and the level are filled from left to the right. This leaves us with a completed tree because every level is completely filled with nodes.</p>
 
@@ -74,6 +74,8 @@
 <p>When the Main root node holds the largest value and has smaller values as we go down. We call this a max heap. We also have min heaps where the main root stores the smallest value.</p>
 
 <p>We can use heaps for sorting (heapsort),They are also used in implementing graph algorithms, We can use graphs to find the shortest path between 2 nodes in a graph. This is the algorithm that powers our gps. Heaps are also used for priority queues. We can also use them to find the kth smallest or largest value which is a popular interview question.</p>
+
+<p>We have 2 kinds of heaps, a max heap is where the value of every nodew is greater than or equal to it's children. Min heaps are the opposite of max heaps. Adding or removing from heaps run in logarithmic time.</p>
 
 <h4>Heaps Operations & Runtime Complexities</h4>
 
