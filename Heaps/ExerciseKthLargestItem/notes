@@ -1,0 +1,11 @@
+this is the notes for ExerciseKthLargestItem
+
+Another popular interview question is finding the kth largest 
+item in a list 
+
+so here is a list [5, 3, 8, 4, 1, 2]
+
+so if k equals 1 we should get 8
+and if k is 2 we should return 5
+
+solution: 
