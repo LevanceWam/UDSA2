@@ -7,7 +7,7 @@
 <h2>Table of Contents</h2>
 <li><a href='#section1'>Binary Trees</a></li>
 <li><a href='#section2'>AVL Trees</a></li>
-<li><a href='#section2'>Heaps</a></li>
+<li><a href='#section3'>Heaps</a></li>
 
 <h2 id=section1>Binary Trees</h2>
 
