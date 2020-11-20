@@ -148,10 +148,12 @@ class Heap {
     }
 
     getHeap(){
+        // This returns all of the items in the heap.
         console.log(_array.get(this))
     }
 
     isEmpty(){
+        // checks to see if the list is empty returns a boolean.
         return this.size == 0;
     }
 

@@ -11,7 +11,9 @@ const hasLeftChild = Symbol();
 const hasRightChild = Symbol();
 const largerChildIndex = Symbol();
 const isValidParent = Symbol();
+const isMaxAlgorithm = Symbol();
 
+let numbers = [5,3,4,0,1];
 
 
 class Heap {
@@ -49,6 +51,10 @@ class Heap {
         _array.get(this).pop();
 
         return root;
+    }
+
+    isMaxHeap(array){
+        return this[isMaxAlgorithm](array,0);
     }
 
     [bubbleUp](){
@@ -147,6 +153,29 @@ class Heap {
         return index * 2 + 2;
     }
 
+    [isMaxAlgorithm](array,index){
+        // We only want to target the parent nodes because the leaf nodes are already valid
+        let lastParentIndex = Math.floor(array.length / 2 - 1);
+
+        // anything past the parent nodes is valid
+        if (index > lastParentIndex) return true;
+
+        // storing the left and right indexes
+        let leftIndex = this[leftChildIndex](index);
+        let rightIndex = this[rightChildIndex](index);
+
+        // here we are storing the boolean value here if the the index is bigger than both of the children then this is the valid parent.
+        let validParent = 
+        array[index] >= array[leftIndex] &&
+        array[index] >= array[rightIndex];
+
+        // we continue to recursively go down the array and check the other parent nodes.
+        return validParent &&
+            this[isMaxAlgorithm](array, leftIndex) &&
+            this[isMaxAlgorithm](array, rightIndex);
+        
+    }
+
     getHeap(){
         // This returns all of the items in the heap.
         console.log(_array.get(this))
@@ -171,5 +200,9 @@ class Heap {
 
     }
 }
+
+const heap = new Heap();
+let value = heap.isMaxHeap(numbers);
+console.log(value)
 
 module.exports = Heap;
