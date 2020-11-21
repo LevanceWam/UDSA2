@@ -8,6 +8,7 @@
 <li><a href='#section1'>Binary Trees</a></li>
 <li><a href='#section2'>AVL Trees</a></li>
 <li><a href='#section3'>Heaps</a></li>
+<li><a href='#section4'>Tries</a></li>
 
 <h2 id=section1>Binary Trees</h2>
 
@@ -86,3 +87,7 @@
 </ul>
 
 <a href="#home">Top</a>
+
+<h2 id=section4>Tries</h2>
+
+<p></p>
