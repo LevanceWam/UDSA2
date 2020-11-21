@@ -84,3 +84,5 @@
     <li>Bubbling Up O(log n)</li>
     <li>Bubbling down O(log n)</li>
 </ul>
+
+<a href="#home">Top</a>

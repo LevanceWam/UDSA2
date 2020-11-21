@@ -155,12 +155,4 @@ class MinHeap{
     }
 }
 
-const min = new MinHeap();
-
-min.insert(1, 'hi');
-min.insert(3, 'hi');
-min.insert(4, 'hi');
-min.insert(2, 'hi');
-min.insert(6, 'hi');
-min.remove();
-min.getHeap();
+module.exports = MinHeap;
