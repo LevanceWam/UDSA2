@@ -90,4 +90,19 @@
 
 <h2 id=section4>Tries</h2>
 
-<p></p>
+<p>This is an important but overlooked data structure. Tries come up in interviews all of the time, but many data structure book and courses never mention them. They are powerful and in this section we are going to use them to implement auto completion. </p>
+
+<h3>What are Tries?</h3>
+
+<p>Tries are another kind of tries. But they are not binary trees so each child can have several nodes. The name trie comes from the name retrieval, they can aslo be called Digital, Radix, or Prefix trees. Like we mention above tries are used to implement auto completion. As a example when ewe go to google and we are using the search query we see that google is quickly suggesting a few
+phrases that start with what we have typed. It is not certian if this was implemented with tries but autocompletion is one of the key applications of tries.</p>
+
+<p>Here is a interesting Question! Why not use a array of strings and return the items that start with a search query? Here are 2 reasons, 1 if we have large number of words or search queries, this array is going to waste a lot of space because a lot of words
+have the same prefix. The other reason is that looking at words that start with a prefix using an array is relatively slow.
+we would have to go through every word and check to see if thr word starts with our prefix.</p>
+
+<p>Tries allows us to store thousands of words or more in a minimal space and provide super fast look ups. So if we have a trie and we have the words bag and boy. Both if these words share the same prefix B and we have it stored in a single place. Unlike arrays we are not duplicating characters in this structure. Now what would happen if we store the word baggage in the trie? It will simply extend the bag branch and now bag and baggage are sharing the same prefix. </p>
+
+<p>Interesting thing to note is that, Each node can hold up to 26 letters. So the trie can hold up to 26 nodes and its nodes can hold up to 26 children. Also the root node is always null or a empty character because english words can start with any of the 26 letters, we can not have 26 roots in a tree.</p>
+
+<p>Let's say we wanted to look up the time complexity of finding the word bag. We start from the root node and we check to see if the node has a b as a child. We then repeat the process for the remaining letters in the word. Now what if we had a longer word? The time looking up is still the same. we need 3 comparsionss to find the word bag, so the time complexity of its operation is O(L) L is the length of the word we are searching for. This can techinally be looked as O(1) but the cost is dependent on the length of the word we're looking at. Adding a word is also O(L) and delete is also the same way.</p>
