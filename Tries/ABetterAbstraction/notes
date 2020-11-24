@@ -1,0 +1,39 @@
+This is the notes for ABetterAbstraction
+
+In the last lecture when we changed the children array
+with a hash table we got a few breaking changes
+so far we only have the insert operation but what if we had other operations 
+
+we would have so many breaking changes so surely there is a way to avoid this right? 
+Absolutely and this where the abstraction principle of OOP comes to the rescue
+
+The abstraction principle states that we shouldn't expose the inner working of our classes
+to the outside 
+
+so where in our code are we breaking this principle?
+
+if we take a look at line 28 we are working directly with the children fiels 
+earlier the children field was a array but the moment we changed this into a hash table 
+our code broke immediately
+
+so this code on this line in the trie class is aware if the inner workings of the node class it know that the 
+children is a hash table that has these methods
+what if we decide to change the data structure or the type of input this is going to break the code again 
+
+so lets try and apply the abstraction principle so this doesnt happen again
+so back to the insert method 
+
+what are the services that we need from a node obj?
+we need 2 services we should be able to ask this node 
+hey do you have a child for this character this is the first service 
+the other service is that we want to tell this node obj 
+add this child as a node obj
+
+how this happens interally we don't care about it can use an array or hash table
+this is none of the business of the trie class
+
+so we are going back to the node class and provide services that the insert method needs 
+all of these are going to be public methods
+
+We are basically going to make methods for the private class and call them instead 
+writing it out in the trie class,
