@@ -3,7 +3,7 @@ class TrieNode {
     constructor(value){
         this.value = value;
         this.children = new Map();
-        this.isEndOfWord;
+        this.isEndOfWord = false;
     }
 
     hasChild(ch){
@@ -47,9 +47,29 @@ class Trie{
         // we are at the end of the insertion we are now going to set this to true so signal that this is the end of the word
         current.isEndOfWord = true;
     }
+
+    find(word){
+        /**
+         * This method takes a string and checks to see if it is in the trie
+         */
+
+        if (word == null) return false;
+
+        let current = this.root;
+        
+        // we need to iterate through the new string 
+        for(let ch of word){
+            // if the current value doesn't have the character as a child then we return false 
+            // if we do have the letter we move on to the next one until we are done with the string
+            if (!current.hasChild(ch)) return false;
+            current = current.getChild(ch);
+        }
+
+        // We check to see if the last letter in current is the final letter in the word and return a boolean
+        return current.isEndOfWord;
+    }
 }
 
 const trie = new Trie();
-trie.insert('hi')
 
 
