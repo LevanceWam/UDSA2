@@ -35,6 +35,8 @@ class Trie{
         this.root = new TrieNode(' ');
     }
 
+    /** Public methods */
+
     insert(word){
         /**
          * This method takes a string and inserts it in the trie
@@ -82,6 +84,13 @@ class Trie{
         this[preOrderTraverseAlgorithnm](this.root);
     }
 
+    postOrderTraverse(){
+        // making a call to the private function
+        this[postOrderTraverseAlgorithnm](this.root);
+    }
+
+    /** Private Methods */
+
     [preOrderTraverseAlgorithnm](root){
        // pre-order travesal 
        // We are going to visit the node and print here 
@@ -90,11 +99,6 @@ class Trie{
         for (let child of root.getChildren()){
             this[preOrderTraverseAlgorithnm](child);
         }
-    }
-
-    postOrderTraverse(){
-        // making a call to the private function
-        this[postOrderTraverseAlgorithnm](this.root);
     }
 
     [postOrderTraverseAlgorithnm](root){

@@ -29,3 +29,14 @@ children each node can have a lot of children as many as 26 so
 so we should visit each of them starting from the left 
 to make this a little easier on ourselves we are going to go back into
 the trienode class and add another service for us to get all of the children of a node 
+
+Here are the solution for tre preorder and the post order  traversal
+So here is what we need to do 
+in the preorder traversal we visit and print the node that we are one
+then we are going to execute a for of loop to iterate through the letters 
+and recursively go through the children
+
+for the postorder we are going to execute the for loop first then print the last letter in the trie
+
+this is important because if we want to print all of the words in a trie we use a preorder
+if we want to delete a word we have to do a postorder traversal
