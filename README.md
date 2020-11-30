@@ -106,3 +106,13 @@ we would have to go through every word and check to see if thr word starts with 
 <p>Interesting thing to note is that, Each node can hold up to 26 letters. So the trie can hold up to 26 nodes and its nodes can hold up to 26 children. Also the root node is always null or a empty character because english words can start with any of the 26 letters, we can not have 26 roots in a tree.</p>
 
 <p>Let's say we wanted to look up the time complexity of finding the word bag. We start from the root node and we check to see if the node has a b as a child. We then repeat the process for the remaining letters in the word. Now what if we had a longer word? The time looking up is still the same. we need 3 comparsionss to find the word bag, so the time complexity of its operation is O(L) L is the length of the word we are searching for. This can techinally be looked as O(1) but the cost is dependent on the length of the word we're looking at. Adding a word is also O(L) and delete is also the same way.</p>
+
+<h4>Tries Operations & Runtime Complexities</h4>
+
+<ul>
+    <li>Insert O(log L)</li>
+    <li>Delete O(log L)</li>
+    <li>Lookup O(log L)</li>
+</ul>
+
+<a href="#home">Top</a>
