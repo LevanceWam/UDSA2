@@ -44,7 +44,7 @@ class Trie{
         // this is because we have 26 letters and there are many possiblities for a string 
         // if we have a letter at the root it makes things difficult
         this.root = new TrieNode(' ');
-        this.size = 0;
+        this.count = 0;
     }
 
     /** Public methods */
@@ -69,7 +69,7 @@ class Trie{
         // we are at the end of the insertion we are now going to set this to true so signal that this is the end of the word
         current.isEndOfWord = true;
 
-        this.size++;
+        this.count++;
     }
 
     find(word){
@@ -117,7 +117,7 @@ class Trie{
     }
 
     countWords(){
-        return this.size;
+        return this.count;
     }
 
     /** Private Methods */
