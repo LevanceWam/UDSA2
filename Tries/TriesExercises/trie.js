@@ -69,6 +69,7 @@ class Trie{
         // we are at the end of the insertion we are now going to set this to true so signal that this is the end of the word
         current.isEndOfWord = true;
 
+        // This is a counter to keep track of the amount of words are in the trie
         this.count++;
     }
 
