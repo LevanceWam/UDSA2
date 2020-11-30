@@ -117,6 +117,7 @@ class Trie{
     }
 
     countWords(){
+        // returns the number of words in the trie
         return this.count;
     }
 
