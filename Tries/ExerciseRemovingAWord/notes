@@ -28,3 +28,5 @@ In this case the deletion stops here because we want to keep the word car in the
 but if we didnt have it we would continue to remove all of the nodes 
 
 so if it has children or is apart of another word we stop the deletion
+
+solution:
