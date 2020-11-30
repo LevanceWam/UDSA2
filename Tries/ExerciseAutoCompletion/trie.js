@@ -35,6 +35,8 @@ class TrieNode {
 const preOrderTraverseAlgorithnm = Symbol();
 const postOrderTraverseAlgorithnm = Symbol();
 const removeAlgorithnm = Symbol();
+const findLastNodeOf = Symbol();
+const findWordsAlgorithm = Symbol();
 
 class Trie{
     constructor(){
@@ -103,6 +105,14 @@ class Trie{
         this[removeAlgorithnm](this.root, word, 0)
     }
 
+    findWords(prefix){
+        let list = [];
+        let lastNode = this[findLastNodeOf](prefix);
+        this[findWordsAlgorithm](lastNode,prefix, list);
+
+        return list;
+    }
+
     /** Private Methods */
 
     [preOrderTraverseAlgorithnm](root){
@@ -140,13 +150,41 @@ class Trie{
         }
 
     }
+
+    [findLastNodeOf](prefix){
+        if (prefix == null) return null;
+
+        let current = this.root;
+
+        for(let ch of prefix){
+            let child = current.getChild(ch);
+            if(child == null) return null;
+            current = child
+        }
+
+        return current;
+    }
+
+    [findWordsAlgorithm](root, prefix, list){
+        if (root == null) return;
+
+        if (root.isEndOfWord) list.push(prefix);
+
+        for(let child of root.getChildren()){
+            this[findWordsAlgorithm](child, prefix + child.value,list);
+        }
+    }
 }
 
 const trie = new Trie();
 trie.insert('care');
 trie.insert('car');
+trie.insert('careful');
+trie.insert('egg');
 trie.insert('b');
-trie.remove('car')
-trie.preOrderTraverse();
+
+let words = trie.findWords('');
+console.log(words)
+
 
 
