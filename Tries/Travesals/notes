@@ -1,0 +1,42 @@
+This is the notes for Travesals
+
+Let's talk about traversing in tries.
+There are 2 ways to traverse a trie:
+
+Pre-Order traversal
+Post-Order Travesal
+
+with pre-Order traversal we visit each node first before we
+visit its children 
+
+with post order traversal we go deep into the trie and start from the leaf 
+nodes and then come back up
+
+so lets go declare some methods and try it out 
+
+so we are going to create a public method called traverse that is going to call on a 
+private method to traverse the trie
+we are going to work on the pre-order travesal first 
+
+with pre order we need to visit the root first 
+we can simply do this by printing the value on the terminal
+
+now we need to visit each child of the root node 
+here is somthing interesting to remember with tries]
+unlike binary trees we do not have left and right 
+children each node can have a lot of children as many as 26 so 
+
+so we should visit each of them starting from the left 
+to make this a little easier on ourselves we are going to go back into
+the trienode class and add another service for us to get all of the children of a node 
+
+Here are the solution for tre preorder and the post order  traversal
+So here is what we need to do 
+in the preorder traversal we visit and print the node that we are one
+then we are going to execute a for of loop to iterate through the letters 
+and recursively go through the children
+
+for the postorder we are going to execute the for loop first then print the last letter in the trie
+
+this is important because if we want to print all of the words in a trie we use a preorder
+if we want to delete a word we have to do a postorder traversal

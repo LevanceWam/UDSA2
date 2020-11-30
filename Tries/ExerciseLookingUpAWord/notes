@@ -1,0 +1,38 @@
+this is the notes for ExerciseLookingUpAWord
+
+for this exercise we need to create a method 
+where we give it a word and it returns a boolean value 
+
+so just like the boolean method we need to iterate over every letter in the word
+and walk down the trie 
+
+If any of the letters are missing we need to return false right away 
+when we get the the last letter
+in the word we are looking for we need to make sure that the letter marks the end of the word if it doesn't
+we still have to mark it false 
+so if we have the word canada only in the trie and we search 
+can this will return false 
+
+solution:
+
+First I created the metod that accepts a word
+
+next i created a variable called current and set its value to root 
+making it easier for us to traverse 
+
+created a for of loop so we can iterate through all of letters in the word that was entered
+
+since the trie starts with an empty string we are going to check and see if 
+any of it's children has the letter of the word if it doesnt we are going to 
+return false immediately
+
+we keep doing this until we hit the end of the loop
+
+once we are done with the loop we are going to see if the current value is at a end of a word
+if it is we will return false;
+so if we had the word canada in the trie and we were looking for can 
+current is only going to stop at can and since we didn't 
+make n the isEndOfWord we are going to get false
+
+Note we made a quick change to the trienode class to set the property isEndOfWord false 
+this way we can return the false value because before we were geting undefined 

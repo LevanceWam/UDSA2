@@ -1,0 +1,100 @@
+This is the notes for ExerciseBuildingATrie
+
+We are going to build a trie from scratch.
+
+Let's look at how the insert method works
+
+Lets say that we have the word cat in a trie
+we are going to start by declaring a variable called current 
+that points to the node of the trie as we mentioned before 
+the root node always has to be null or empty
+
+we look at the root node and see if we have have a child for c if
+not we are going to create that child and then we set current to the child node
+then we move on to the next letters and repeat the process until we are done.
+
+once we reach the end we are going to want to mark the last node as the end of the word because these characters could 
+easily be prefixed in other words. 
+So in the future when we travese the true we want to he able to easily figure out 
+what boards we have stored 
+
+so to implement this we are going to need a couple of classes to do this 
+these are: 
+
+Trie
+    Node 
+    This is a private class in the trie in the node class we're going to have 
+    a few fields:
+    value: characters
+
+    children: array or hashmap
+    there are 2 ways we can implement the children we are going to look at both ways 
+    we are going to start with an array
+    so the children field should be an array that can go up to 26 because there are 26 letters in english
+    
+    isEndOfWord: boolean 
+
+next we are going to want to implement a insert method which takes a word which is a string
+
+now when using a array we need to figure out at what index are we storing a given child too
+we can do this by using this expression
+index = ch - 'a'
+in java (not sure about javascript yet)
+when we subtract 2 characters it will convert them into
+numeric representation
+so lowercase 'a is 97 'd' is 100
+so 100 minus 96 equals 3
+so we should store 'd' at index 3
+
+solution:
+
+First we need to build all of the classes needed to 
+get this working 
+
+First we need to make a private class called node 
+this node class will be the nodes that are inserted into the trie
+
+so here are the fields we created
+value 
+children = [] we should set the limit for this to be 26
+and
+a empty field called isEndofWord this is where we will store the boolean
+
+next we are going to make the trie classes
+
+in the constructor we are going to want to make this a private value and 
+set create a variable called root and set it to a new Node that has the value of an empty string 
+
+now that we have this done we can work on the insert operation
+
+First we are going to create a method called insert and give it the parameter of word
+inside of the method we are going to create a variable called current and store the root of the object inside of it
+
+The reason we are doing this is because we want to see if the root node has the character as a child
+if it does we are going to move to that child and continue doing that until we have to insert a new character
+once we insert the character we will set current to that and continue to insert the rest of the laters from there 
+
+to get that plan in motion we need to create a for of loop to iterate over all of the characters in the string 
+we are then going to calculate the index where each later is going to be stored
+
+THIS IS FOR JAVASCRIPT
+in java when you subtract strings it automatically converts the string into its character 
+BUT in javascript we do not have that luxuary so here is what we need to do
+when we declare the character in the expression immediately we need to call the string method charCodeAt 
+this gives us the numerical value that the ch we are inserting
+we subtract this number by the numerical code of a and this will give us our index
+
+next we are going to write a if statement 
+if the index in current.children (this is the array we are targeting)
+is null we are going to store the ch here if not we will move on to the next ch
+but if it is empty we will store the character here
+we are then going to set current to  the node that we just inserted and check to see if the next character is a child of that one 
+
+when we hit the end we are going to leave the for loop because we have hit the end of the word
+at this point we are going to set the current.isEndOfWord = true;
+
+and that is our insert method
+
+now the problem with using a array to store the children of a node
+is that everytime we create a node object were allocating an array with 26 elements
+this wastes alot of space

@@ -1,0 +1,13 @@
+This is the notes for ExerciseAutoCompletion
+
+Now we have made it to the end of the section it is time to implement 
+Auto Completion jest like we have on google and youtube 
+
+so we are going to create a trie with a few words on the 
+so we want to when the user types car all of the words that are prefixed with the 
+word car pops up
+
+to implement this we are going to need to use a preOrder travesal 
+we only want to show the nodes that represent the prefix so nothing else 
+
+solution:

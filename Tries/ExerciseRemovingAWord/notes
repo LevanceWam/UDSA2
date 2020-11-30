@@ -1,0 +1,32 @@
+This is the notes for ExerciseRemovingAWord
+ 
+ Lets start working on the delete operation.
+ so lets imagine that we have the words care and car in the trie 
+
+lets say that we wanted to remove the word car 
+we start from the root and using recursion we do a post order 
+traveral in this tree so we go all the way down until we find the last node 
+for the last letter of this word which in this case is 'r' in car
+
+now in this situation we can not remove the r because otherwise we would end 
+up removing the word care as well 
+so to fix this we should change the isEndOfWord to false 
+
+Now what about care?
+Well same approach we would do a post traversal using recursion and 
+get the last node 
+then we are going to change the isEndOfWord to false
+and get the chidren of this node  
+
+since 'e' doesn't have any children we can physically remove it from the 
+tree so save some space 
+on the way back when we are done with the recursive calls we get back to 
+the 'r' and this is where we remove the node for 'e' so when we get back to 
+'r' we asked the e if it had any children since it didnt we removed it 
+
+In this case the deletion stops here because we want to keep the word car in the try
+but if we didnt have it we would continue to remove all of the nodes 
+
+so if it has children or is apart of another word we stop the deletion
+
+solution:

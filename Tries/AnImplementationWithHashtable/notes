@@ -1,0 +1,8 @@
+This is the notes for AnImplementationWithHashtable
+
+Ok lets see how we can replace the array in the node class with a hashtable.
+so in the node class we are going to get rid of the 
+array and declare a new map object instead
+
+now when we store a character the character will be the key 
+and the following node is going to be the child
