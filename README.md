@@ -9,6 +9,7 @@
 <li><a href='#section2'>AVL Trees</a></li>
 <li><a href='#section3'>Heaps</a></li>
 <li><a href='#section4'>Tries</a></li>
+<li><a href='#section5'>Graphs</a></li>
 
 <h2 id=section1>Binary Trees</h2>
 
@@ -116,3 +117,7 @@ we would have to go through every word and check to see if thr word starts with 
 </ul>
 
 <a href="#home">Top</a>
+
+<h2 id=section5>Graphs</h2>
+
+<h3>What are Graphs?</h3>
