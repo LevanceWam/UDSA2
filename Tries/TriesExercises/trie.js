@@ -37,6 +37,7 @@ const postOrderTraverseAlgorithnm = Symbol();
 const removeAlgorithnm = Symbol();
 const findLastNodeOf = Symbol();
 const findWordsAlgorithm = Symbol();
+const containsAlgorithm = Symbol();
 
 class Trie{
     constructor(){
@@ -122,6 +123,10 @@ class Trie{
         return this.count;
     }
 
+    contains(word){
+        this[containsAlgorithm](this.root, word);
+    }
+
     /** Private Methods */
 
     [preOrderTraverseAlgorithnm](root){
@@ -185,15 +190,4 @@ class Trie{
     }
 }
 
-const trie = new Trie();
-trie.insert('care');
-trie.insert('car');
-trie.insert('careful');
-trie.insert('egg');
-trie.insert('b');
-
-
-console.log(trie.countWords());
-
-
-
+module.exports = Trie;
