@@ -120,4 +120,10 @@ we would have to go through every word and check to see if thr word starts with 
 
 <h2 id=section5>Graphs</h2>
 
+<p>Graphs are one of the most versatile data structures because they allow us to really interesting problems. They're used in social networks, used in GPS, basically anywhere we want to model the relationship between a bunch of objects.</p>
+
 <h3>What are Graphs?</h3>
+
+<p>We use graphs to represent connected objects such as the routers in a network or people on a social media platform. Using a graph we can see how people are connected, and how strong these connections are.</p>
+
+<p>Just like trees graphs consist of nodes and edges. In fact, Mathematically speaking a tree is kind of a graph. It's a graph without any cycles. Also here we don't have a root node. So let's say we have a graph with 4 nodes and 6 edges or lines. The nodes are referred to as vertices, which is the is the plural of vertex, Vertex is an older term. So these nodes canbe connected to any other nodes. We don't have a limitation in terms of how many connections or ages we can have for one node if 2 nodes are directly connected, say that they're adjacent or neighbors. If the edges have a direction, we say we have a directed graph. This is similar to how twitter works, if you follow someone, there is connection from your account to their account. But not the other way around unless they follow you</p>
