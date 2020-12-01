@@ -124,7 +124,9 @@ class Trie{
     }
 
     contains(word){
-        this[containsAlgorithm](this.root, word);
+        if (word == null) return false;
+
+        return this[containsAlgorithm](this.root, word, 0);
     }
 
     /** Private Methods */
@@ -187,6 +189,19 @@ class Trie{
         for(let child of root.getChildren()){
             this[findWordsAlgorithm](child, prefix + child.value,list);
         }
+    }
+
+    [containsAlgorithm](root, word, index){
+        if (index == word.length) return root.isEndOfWord;
+
+        if (root == null) return false;
+
+        let ch = word.charAt(index);
+        let child = root.getChild(ch);
+
+        if (child == null)return false;
+
+        return this[containsAlgorithm](child, word, index + 1);
     }
 }
 
