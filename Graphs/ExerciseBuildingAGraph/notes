@@ -1,0 +1,18 @@
+this is the notes for ExerciseBuildingAGraph
+
+lets build this graph from scratch:
+
+- Make a class called Graph
+- we need a private node class 
+- node class needs a field called label
+
+Graph operations:
+- addNode(label)
+- removeNode(label)
+- addEdge(from, to)
+- removeEdge(from, to)
+- print method
+
+when we implement the print method we should see something like 
+a is connected with b,c
+b is connected with a 
