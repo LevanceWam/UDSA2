@@ -32,6 +32,11 @@ class Graph{
     }
 
     removeNode(label){
+        /**
+         * Remove a node from the from the graph 
+         * This will aslo remove any edges that this node has.
+         */
+        
         let graphNode = this.map.get(label)
         if (graphNode == null) return;
 
@@ -70,7 +75,7 @@ class Graph{
         if (fromNode == null || toNode == null) return;
     
         let index = this.adjencyList.get(fromNode).indexOf(toNode);
-        
+
         this.adjencyList.get(fromNode).splice(index, 1);
     }
 
