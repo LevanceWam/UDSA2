@@ -108,22 +108,27 @@ class Graph{
     }
 
     depthFirstIteration(root){
+        // validating the root node.
         let node = this.map.get(root)
         if (node == null) throw new Error(`Node ${root} doesn't exist`);
 
         let visited = new Set();
         let stack = new Stack();
-
         stack.push(node);
 
         while (!stack.isEmpty()){
            let current = stack.pop();
 
+           // We want to visit our current node as well as the unvisited neighbors
+           // so we we are using the set to keep track of what nodes where visited 
+           //  here if the current node is in the set we are going to go back to the top of the while loop and get another node
            if (visited.has(current)) continue;
 
+           // otherwise we are going to print the node and add it to the set 
            console.log(current.label);
            visited.add(current);
 
+           // now we are going to look at all the other unvisited neighbors
            for (let neighbor of this.adjencyList.get(current)){
                if(!visited.has(neighbor)){
                    stack.push(neighbor);
@@ -159,7 +164,7 @@ graph.addNode('d');
 
 graph.addEdge('a','b');
 graph.addEdge('d','c');
-graph.addEdge('b','d');
 graph.addEdge('a','c');
+graph.addEdge('b','d');
 
 graph.depthFirstIteration('a')
