@@ -10,6 +10,9 @@ class GraphNode {
     }
 }
 
+/** Private members */
+const depthRecursive = Symbol();
+
 
 class Graph{
     constructor(){
@@ -95,6 +98,29 @@ class Graph{
             }
         }
     }
+
+    depthFirstRecursive(root){
+        
+        if (!this.map.get(root)) throw new Error(`Node ${root} doesn't exist`);
+        return this[depthRecursive](this.map.get(root), new Set());
+    }
+
+    /** Private methods */
+
+    [depthRecursive](root, set){
+        // we are visiting the current root node and sending it to the set
+        set.add(root.label);
+
+        // iterating over what nodes are connected to the current root
+        for (let key of this.adjencyList.get(root)){
+            // if the set does not have the node connected to the root we are going to recursively call
+            // this function to add it to the set. This grabs the first node that is connected
+            if(!set.has(key)) {
+                this[depthRecursive](key, set)
+            }
+        }
+        return set;
+    }
 }
 
 let graph = new Graph();
@@ -105,9 +131,8 @@ graph.addNode('c');
 graph.addNode('d');
 
 graph.addEdge('a','b');
-graph.addEdge('a','c');
-graph.addEdge('b','d');
 graph.addEdge('d','c');
+graph.addEdge('b','d');
+graph.addEdge('a','c');
 
-
-graph.print();
+graph.print()

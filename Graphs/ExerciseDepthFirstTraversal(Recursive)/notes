@@ -4,7 +4,7 @@ we are going to implement the depth-first traversal of on the following
 graph(screenshot in folder) the implementation
 is vert similar to what we had to do in the binary tree section
 
-because remeber a tree is a special kind of graph
+because remember a tree is a special kind of graph
 
 so what we are going to need is a recursive method that takes a node obj 
 visit that node and all of its neighbors recursively 
