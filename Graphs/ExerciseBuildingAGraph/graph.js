@@ -31,13 +31,30 @@ class Graph{
 
     }
 
+    removeNode(label){
+        let graphNode = this.map.get(label)
+        if (graphNode == null) return;
+
+        for (let key of this.adjencyList.keys()){
+
+            let index = this.adjencyList.get(key).indexOf(graphNode);
+
+            if(this.adjencyList.get(key).includes(graphNode)) {
+                this.adjencyList.get(key).splice(index,1);
+            }
+        }
+
+        this.adjencyList.delete(graphNode);
+        this.map.delete(graphNode);
+    }
+
     // Making the connection between 2 nodes
     addEdge(from, to){
         let fromNode = this.map.get(from);
-        if (fromNode == null) throw new Error('This node does not exist.');
+        if (fromNode == null) throw new Error('This starting node does not exist.');
 
         let toNode = this.map.get(to);
-        if (toNode == null) throw new Error('This node does not exist.');
+        if (toNode == null) throw new Error('This ending node does not exist.');
 
         /**
          * Here we are getting the key that has access to the array
@@ -45,6 +62,16 @@ class Graph{
          */
         this.adjencyList.get(fromNode).push(toNode);
         // this.adjencyList.get(toNode).add(fromNode) this is for the undirected graph to link it from the other nodes side like facebook
+    }
+
+    removeEdge(from, to){
+        let fromNode = this.map.get(from);
+        let toNode = this.map.get(to);
+        if (fromNode == null || toNode == null) return;
+    
+        let index = this.adjencyList.get(fromNode).indexOf(toNode);
+        
+        this.adjencyList.get(fromNode).splice(index, 1);
     }
 
     print(){
@@ -71,10 +98,16 @@ graph.addNode('a');
 graph.addNode('b');
 graph.addNode('c');
 graph.addNode('d');
+graph.addNode('e');
 
 graph.addEdge('a','b');
 graph.addEdge('a','c');
 graph.addEdge('a','d');
 graph.addEdge('b','c');
+graph.addEdge('b','e');
+
+graph.removeEdge('a','c')
+graph.removeEdge('a','d')
+graph.removeEdge('b','e')
 
 graph.print();
