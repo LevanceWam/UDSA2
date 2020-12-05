@@ -1,0 +1,102 @@
+This is the notes for ExerciseTopologicalSort
+
+Let's imagine that we have a project like a web or mobile app
+and this project is dependent on the code and a few other projects
+when we compile or build the project we want the dependencies to be compiled in the 
+right order 
+
+But how do we find the right order using a graph?
+(look at screenshot)
+so let's say P represents our project lets say this project is dependent 
+on 2 other libraries or projects one for image manipulation and the other 
+for data encrytpion so in order for us to build the P 
+first we should build the A and the B 
+
+However both these projects are dependent on another project that
+provides a bunch of reusable building blocks that would be X
+so in order for us to build the project we have to build X followed by A and B then P
+
+this is what we call topological sorting 
+
+this is one of the common interview questions 
+with the topological sorting algorithm we can figure out 
+the right order that we need to process the nodes of a graph
+and this example the nodes represent projects.
+
+another application is in scheduling jobs 
+if we have a bunch of jobs that are dependent on eachother 
+we can use the topological sorting algorithm to come up with the 
+right order to perform this job 
+
+there are a couple of things we need to now about this algorithm
+first is that it doesn't produce unique results 
+
+so if we topological sort thos graph e can get XABP or XBAP 
+what we will get is based on how we implement the algorithm
+there are different ways to topological sort a graph
+
+another thing to know is that this algorithm only works on graph without a cycle 
+so if we had a link between the P and C we are basically saying that in order to build P we should build X 
+first but the X can only be built if the P is built first 
+it doesn't make sense
+so this algorithm only works on graphs with out a cycle
+these graphs are called Directed Acyclic Graph or 'dag' for short
+Acyclic means without a cycle 
+
+so our graphs should be directed and Acyclic
+
+Lets see how the algorithm works
+so we pick a node and do a depth-first traversal
+so if we start with X (doesn't matter where we start)
+so this means X is followed by the A and then the P the recursion stops here 
+because the P doesn't have children or neighbors that means 
+there are no projects that are dependent on this node
+so this node should be the last node when we topological sort the graph 
+
+the idea of this graph is that if we do a depth-first traversal in the graph
+eventually we are going to find nodes that don't have any outgoing edges.
+which means other nodes are not dependent on them 
+
+so when calculating the order these nodes should be towards the end 
+in contrast nodes that have outgoing edges are are basically top of the hierachy should 
+come first we use a stack to implement this algorithm 
+
+so using a depth first traversal we go deep into the graph and add a node to the stack 
+as we come back up we add the current node to the stack if we have visited all of it's 
+children
+
+so lets try to put this in action
+so first we add the P to the stack now we go back and 
+get the A we have visited all the neighbors of the A node 
+now we go back to the X we haven't visited all of the children of the X node 
+so we can not add it to the stack yet we have to visit them all 
+so we go to the B then the P but we already have P so we go back
+now we have visited all the children of the B node so now it is time to add the 
+B node to the stack 
+
+finally we are back to the X we have visited all the children of the X
+so we add X
+
+now if we pop the stack till it is empty these nodes are going to come out in the right order 
+so with this algorithm we go deep into the graph and find nodes that don't have any outgoing edges
+
+Now what of we started from the P since it doesn't have any children this isn't going to work well 
+but this is a problem that is very easy to solve 
+we can build a for loop and do a depth first traversalon each node 
+with this we'll eventually visit every node in the graph
+
+so here is what we need to do:
+build the graph we saw in this video 
+add all of the nodes and connections 
+then add a method called topologicalSort
+this method should return a list of strings 
+we need a public and a private method for the recursive work
+
+this method is going to be very similar to the depthfirst recursion method we have 
+however in this method when we visit the node we print it on the console but when we 
+are doing topological sorting we are not going to print the node on the console we're just going to mark it as visited 
+we are going to recursively visit all of the children and then we are going to push it into a stack with this algorithm
+
+nodes that are deep in our hierachy are going to end up at the botom of the stack these are the nodes
+that are dependent on a lot of other nodes
+
