@@ -1,0 +1,85 @@
+This is the notes for ExerciseCycleDetection(DirectedGraphs)
+
+In the previous section we learned that topological sorting algorithm doesn't 
+work if the graph has a cycle.
+
+lets learn how to detect a cycle in a directed graph
+we need to maintain 3 sets of nodes:
+one set to keep track of all of the nodes in the graph
+we want to store the nodes that we are currently visiting  
+another to keep track of the ones that we already visited 
+
+the difference between the last 2 sets is that if we visit a node and all of 
+its children we put it in the visited set but as long as we haven't visited all of the 
+children of a node 
+
+we are going to keep it in the visiting set 
+okay now in a interview we might get asked to write a algorithm to detect a 
+cycle in a graph using colors this is a trick question
+
+here we are calling the sets All, Visiting, and Visited (look at sceenshot)
+you could call them red, blue, and green and it wouldnt matter 
+
+lets see how this algorithm works on a graph with out a cycle 
+we start off by adding all of the nodes to the first set
+we pick any node to this set it doesnt matter which node so let pick A
+
+now we start a depthfirst search from this node 
+so we removed it from the first set and put it in the visiting set 
+now we should start visiting the neighbors of A
+a has 2 neighbors B and C
+
+We are going to go to B next and order doesnt matter here 
+so now we are going to move B from the All set and into the visiting set 
+
+next we should explore the neighbors of B so we move on to C
+now we are going to move C from the all set to the visiting set
+
+C at this point doesnt have any neighbors so we are done visiting C and it will go 
+into the visited set
+
+the same goes for B because it has no more neighbors to visit 
+so B goes to the visited set now
+
+Now back to A 
+we started the traversal from here 
+we went in the direction of B now we should go toward C but we already visited it 
+so we are not going to. this means that we are done with A and we can
+put it in the visited set 
+
+now we are left with one node in the graph 
+now we are going to start a depth first traversal on this node
+since this node doesn't have any neighbors we are going to add it 
+to the visiting then straight to the visited set 
+our algorithm is complete and we didn't find a cycle
+
+now we are going to change the direction of the edge from A to C -> C to A (screenshot2)
+
+again we start from A and move it to the visiting set
+we then look up its neighbor so we add B to the visiting set
+again here we look up the neighbor for B and we add C to the visiting set 
+
+now here is the interesting part C has a neighbor and thats the A but we are not 
+done visiting it 
+remember we can only put a node in the visited set when we are done visiting all of the children 
+so when we reach a node that is still being visited  that means that there is a way back to that node 
+via one of its children or neighbors so the graph has a cycle 
+
+if we wanted to print the nodes that are part of a cycle we need to keep a map of 
+each node with its parent 
+
+so we are going to need a hash table here 
+we call it parents so now we start the travesal again 
+
+in the parents hashtable we add A and for the parent we add null because we 
+started from A
+
+then we go to B and and another entry to the hash table here we can see that we
+came to be from A so A is the parent of B 
+
+finally we go to C and add another entry to the hash table 
+now we have found the cycle 
+
+now we can use the hash table to construct the cycle we know that the 
+edge from the C to A is definitelty a cycle 
+
