@@ -131,3 +131,11 @@ we would have to go through every word and check to see if thr word starts with 
 <p>Undirected Graphs are like Facebook and LinkedIn. If we add someone as a friend there will be a line or a connection between the two if us. This connection doesn't have a direction. Now these edges can also have a weight. We use these weights to represent how strong a connection is. For example on a social media platform, if two people interact a lot we can put a higher weight on their connection. Later, we can show their best friends by finding the neighboring node with the highest weights.</p>
 
 <p>Another application of graphs is in finding the shortest path between 2 nodes. For example, we can use a graph to represent how different cities or areas are connected. The weight we put on these edges can represent the distance traveling cost or traffic conditions. Later on in this section we are going to implement an algorithm to find the shortest path between nodes.</p>
+
+<p>Graphs are used to represent connected objects such as people, jobs, cities, and etc. Graphs help us solve interesting problems such as the shortest path between 2 areas and finding the order to process a series of jobs or projects that are dependent on eachother which we call topological sorting.</p>
+
+<p>We have 2 ways to implement a graph: an Adjacency Matrix or a Adjacency List. A Adjacency matrix is more suitable for implementing dense graph where every node is connected to every other node. In reality we use Adjacency List to represent a graph.</p>
+
+<p>We aslo have 2 ways to traverse a list Depth-first search (DFS) and breath-first search (BFS). With these algorithms we can find the nodes that are reachable from a given node.</p>
+
+<a href="#home">Top</a>
