@@ -1,0 +1,20 @@
+This is the notes for ExerciseBreadthFirstTraversal(Iterative)
+
+implementing the breadth first algorithm is very similar to the depth first traversal 
+algorithm execept instead of using a stack we use a queue
+
+everything else is exactly the same
+here is why (please look at the screenshot)
+we are going to start at the A node as the root 
+so we have a queue 
+F [] B
+F is the front and B is the back
+so we add A to the queue and then we give it to the while loop
+in our while loop we remove the item in the front of the queue and visit it
+so we are going to print A and then look at it's unvisited neighbors
+
+so we then add the b and the c to the queue in the next iteration we are going to remove the item at the front 
+which means we are going to remove B visit and print it 
+
+now we look at its unvisited neighbors and we add it to the end of the queue
+we are then going to remove the C then followed by the D 

@@ -1,0 +1,134 @@
+This is the notes for AdjacencyList
+
+Another way to represent the edges in a graph is using what 
+we call the AdjacencyList
+
+which is an array of linked list.
+so every element in the array we have a linked list
+and this linked list contains the adjacent nodes or the neighbors of the given node 
+so instead of using a matrix to store the combinations of edges just to turn some of them on
+we only store the edges that exist.
+
+jsut like in the Adjacency matrix we have a hash table for finding the index of the node 
+so here the index of john is zero and the first element in the AdjacencyList represents the neighbors of john 
+(look to the screenshoot for this example)
+
+In the graph john is connected to marym bob, and alice 
+so 1, 2, and 3 represent the index of these 3 nodes in the graph
+
+so we are only storing the edges that exist this is why this list is more 
+space effcient than the matrix.
+
+what is the base complexity here
+well in this array we made one entry for each mode that is O(V)
+
+now for each node we are going to have 0 or more edges this can vary from one node to another
+now how many edges do we have in total?
+we are going to represent this with E so space complexity of 
+a AdjacencyList is O(V + E)
+
+space complexity = O(V + E)
+
+now lets lool at the worse case scenerio this is when each node is connected to every other node 
+we call this a dense graph
+
+in this graph the total numer of edges equals V * (V - 1)
+E = V * (V - 1)
+Because every node is connected to all the other nodes except itself 
+now in some graphs the node can be connected to itself 
+but we aren't going to worry about that right now
+
+As we know when we do complexity analysis we only care about the parts 
+that grow faster
+so instead of the E = V * (V - 1) we can drop the v and say the total number of edges
+roughly equals V^2
+
+lets take a look into the time complexity of various operations
+
+To add a node we simply add a new element to the AdjacencyList
+this is a O(1) operation.
+Add Node: O(1)
+
+To remove a node, well there are 2 things we are going to have to do 
+we need to remove the element from the AdjacencyList and make sure
+no other nodes have a link to this node so we have to iterate over the AdjacencyList and remove the target node from every link
+so what would be the time complexity of this operation
+well here we have V items so iterating over the AdjacencyList
+runs in O(V). In each iteration er need to remove the target node from each linked list
+this is normally a O(n) operation 
+But the numbers of nodes in each linked list can vary
+so how are we going to calculate the time complexity
+well we really don't care abotut the number of nodes in each linked list 
+in total 
+
+if the graph has edges we're going to have E nodes across all of these linked list 
+so the time complexity of removing a node is:
+
+Remove Node: O(V + E)
+
+Now what about the worse case scenario? 
+This is where we would have a dense graph 
+we know that the total number of edges is roughly equal to V^2
+
+So removing a Node in a dense graph is E = V^2
+
+lets talk about adding a edge lets say we want to add a connection from bob to john 
+using the hashtable we find the index if these nodes 
+we go to the linked list of bob and add a new node there
+this is O(1) operation, However before adding this edge we have to make sure
+that this edge doesn't exist so we have to iterate over this linkedList ti make sure that the target node is not 
+there
+This is an O(n) operation
+
+so if we were to say K is the number of edges a given node has 
+adding an edge is O(K)
+
+Adding Edge: O(K) 
+
+worst case scenario this being a dense graph 
+we are going to Have V items in this list so the time complexity of adding a edge is O(V)
+Adding Edge dense: O(K)
+
+we have a special type of graph called multi-graph that allows 2 nodes to be connected by multiple edges 
+if we are using a multi graph we do not need to check for the exisent of an edge 
+so adding a edge here is O(1)
+Adding Edge multi: O(1)
+but we are not going to tackle this concept 
+
+what about removing a edge
+Again we are going to have to iterate over the linked list to find a target node 
+and remove it this is O(K)
+
+Remove Edge: O(K)
+
+dense Remove Edge O(V)
+
+what about checking to see of 2 nodes are connected 
+
+well we are going to hvae to iterate over the linked list to see of the 
+target node exist or not this is going to be a O(K)
+
+Query Edge O(K)
+
+Dense Query Edge: O(K)
+
+finally what is the time complexity of finding all the nodes adjacent to a given node 
+Again we have to iterate over the linked list for this node and this is O(K) 
+Find neighbors: O(K)
+Dense Find neighbors: O(V)
+
+We are going to look at the screen shot that compares martix and list
+
+now the main question which one is better?
+Here is some Pragmatic advice 
+
+All of the time complexities we see for the list is for the average 
+scenario
+
+Lets take a look at the worse case scenario
+as we can see from the screen shot both of the Adjacencies take the same amount of space 
+but the Adjacency martix performs better
+so if we are using a dense graph we should use a Adjacency matrix
+anything else use the AdjacencyList
+
+in reality the AdjacencyList is often better to represent graphs 

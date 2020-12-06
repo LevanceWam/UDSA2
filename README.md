@@ -9,6 +9,7 @@
 <li><a href='#section2'>AVL Trees</a></li>
 <li><a href='#section3'>Heaps</a></li>
 <li><a href='#section4'>Tries</a></li>
+<li><a href='#section5'>Graphs</a></li>
 
 <h2 id=section1>Binary Trees</h2>
 
@@ -114,5 +115,27 @@ we would have to go through every word and check to see if thr word starts with 
     <li>Delete O(log L)</li>
     <li>Lookup O(log L)</li>
 </ul>
+
+<a href="#home">Top</a>
+
+<h2 id=section5>Graphs</h2>
+
+<p>Graphs are one of the most versatile data structures because they allow us to really interesting problems. They're used in social networks, used in GPS, basically anywhere we want to model the relationship between a bunch of objects.</p>
+
+<h3>What are Graphs?</h3>
+
+<p>We use graphs to represent connected objects such as the routers in a network or people on a social media platform. Using a graph we can see how people are connected, and how strong these connections are.</p>
+
+<p>Just like trees graphs consist of nodes and edges. In fact, Mathematically speaking a tree is kind of a graph. It's a graph without any cycles. Also here we don't have a root node. So let's say we have a graph with 4 nodes and 6 edges or lines. The nodes are referred to as vertices, which is the is the plural of vertex, Vertex is an older term. So these nodes canbe connected to any other nodes. We don't have a limitation in terms of how many connections or ages we can have for one node if 2 nodes are directly connected, say that they're adjacent or neighbors. If the edges have a direction, we say we have a directed graph. This is similar to how twitter works, if you follow someone, there is connection from your account to their account. But not the other way around unless they follow you.</p>
+
+<p>Undirected Graphs are like Facebook and LinkedIn. If we add someone as a friend there will be a line or a connection between the two if us. This connection doesn't have a direction. Now these edges can also have a weight. We use these weights to represent how strong a connection is. For example on a social media platform, if two people interact a lot we can put a higher weight on their connection. Later, we can show their best friends by finding the neighboring node with the highest weights.</p>
+
+<p>Another application of graphs is in finding the shortest path between 2 nodes. For example, we can use a graph to represent how different cities or areas are connected. The weight we put on these edges can represent the distance traveling cost or traffic conditions. Later on in this section we are going to implement an algorithm to find the shortest path between nodes.</p>
+
+<p>Graphs are used to represent connected objects such as people, jobs, cities, and etc. Graphs help us solve interesting problems such as the shortest path between 2 areas and finding the order to process a series of jobs or projects that are dependent on eachother which we call topological sorting.</p>
+
+<p>We have 2 ways to implement a graph: an Adjacency Matrix or a Adjacency List. A Adjacency matrix is more suitable for implementing dense graph where every node is connected to every other node. In reality we use Adjacency List to represent a graph.</p>
+
+<p>We aslo have 2 ways to traverse a list Depth-first search (DFS) and breath-first search (BFS). With these algorithms we can find the nodes that are reachable from a given node.</p>
 
 <a href="#home">Top</a>

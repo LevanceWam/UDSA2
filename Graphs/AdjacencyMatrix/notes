@@ -1,0 +1,108 @@
+This is the notes for AdjacencyMatrix
+
+We have 2 ways to implement a graph in code. In this lecture we are going to talk 
+about the first approach then the second in the next video.
+
+One way to represent the edges in a graph is using a matrix or a 2 dimensional array. Using this matrix, we can see how nodes are 
+connected. So for every node in the graph we're going to have a row and a column. (look at the screenshot)
+if the 2 nodes are connected we mark their intersection with a one or a true
+taking a look at the screenshot we can see that john is connected with mary, bob, and alice
+
+this is what we call adjacency matrix this is fairly easy to implement all we need is a 2 dimensional array
+but the problem with this approach is the amount of space we need to allocate 
+for the matrix. 
+
+If we have n nodes our space complexity is going to be n squared O(n^2)
+this can grow the list very fast.
+
+for example if we have 100 nodes our matrix us going to have 1 million entries
+the approach we are going to explore in the next lecture will solve this problem
+but we are going to continue to look at this approach because it has it's own merits.
+
+let's take a look at the various operations and the time complexity
+
+If we want to add a node we have to allocate the new matrix with one extra row and column 
+and then copy all of the existing items in this matrix into the new one 
+
+so how many entries do we currently have is n^2
+so adding a new node is an expensive operation and runs in 
+O(n^2) 
+
+Add node: O(n^2) 
+
+Now we could optimize this by pre allocation a large matrix so we don't have to copty all these 
+items everytime we add a new node
+
+But then again this is going waste memory also when talking about graphs
+we prefer to express the time complexity in terms of V which is the number of vertices or nodes in this graph
+as we will see later the time complexity of certian operations also depend on the number of edges
+
+Add node O(V^2)
+
+so we use V and E instead of n when we do complexity analysis on graphs 
+
+What about removing a node or vertex.
+we have to allocate a new smaller matrix and copy items around
+so this will be O(V^2)
+
+Remove node O(V^2)
+
+ok what about adding a edge ?
+lets say we wanted to add a edge between alice and john 
+first we need to find the index of these nodes we can use a hash table to
+store our nodes and their indexes in the adjacency matrix
+
+So in this hash table we map our nodes to their indexes in their adjacency matrix 
+ if we want to add the edge between alice and john we need to find the indexes using the hash table
+  this is an O(1) operation
+
+once we have the indexes we can quickly go to the corresponding item in our matrix and turn it on
+so adding a edge is pretty fast and runs in constant tikme 
+
+Add Edge: O(1)
+
+now what about removing an edge?
+it is the same as adding an edge we have to go to a given entry in the matrix and set it to false 
+
+Removing Edge: O(1)
+
+Now what about checking to see if 2 nodes are connected? 
+what if we wanted to see if alice and john are connected 
+again we look up the indexes and read the value of the corresponding entry in the matrix this is a O(1)
+
+Query Edge: O(1)
+
+another operation we use frequently is finding all the nodes adjacent or directly connected to
+a node that means the neighboring node is in this matrix how can we fing the neighbors if alice?
+
+First we are going to have to use the hash table to find the index of alice in our matrix
+noe we need to look at every item in this row to find the connected nodes
+how many items do we have in this row that is equal to the 
+number of nodes or vertices 
+
+so finding the neighbors of a node runs in O(V) and that means we have 
+1 million people or nodes in the graph and john is only connected to 3 people
+we have to check the connection between john and all the other 1 million people
+just to discover his 3 connections
+
+FindNeighbors: O(V) (which is like O(n) but we use v instead for graphs)
+
+So overall:
+The adjacency matrix requires a fair amount of space, Space O(V^2)
+but performs well if we need to add, remove or query the existence of an edge 
+
+Query Edge: O(1)
+Add Edge: O(1)
+Removing Edge: O(1)
+
+finding the neighbors of a given node is a bit slow and runs in
+linear time  
+
+FindNeighbors: O(V)
+
+adding and removing nodes are the slowest operations and run in quadratic time 
+add node: O(V^2)
+remove node: O(V^2)
+
+so they are suitable if we know ahead of time how many nodes we are going to need 
+we are not going to be adding or removing nodes often.

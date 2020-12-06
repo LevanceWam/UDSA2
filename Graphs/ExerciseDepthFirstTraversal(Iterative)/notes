@@ -1,0 +1,39 @@
+This is the notes for ExerciseDepthFirstTraversal(Iterative)
+
+now that we know how to get the depth first traversal using recursion 
+we are going to implement it this time with iteration
+it is really interesting 
+
+The following explanation is for the java runtime and how it executes a method
+I am using javascript at the moment and it works the same for what we are trying to accomplish
+
+so lets say that we call methodA(x)
+when java runtime starts to execute the method it is going to
+grab the x and push it into a stack
+
+when method a finishes the execution the java runtime is going to remove the x from the stack
+the purpose of this is to remember the value of the arguments in between the method calls
+
+so lets say in the middle of methodA we have a call to methodB(y)
+when java starts executing a it is going to push x into the stack now before it can remove the x
+we have a call to method b so here once again java runtime is going to push the y into the stack
+
+when the methods are done with the execution java runtime is going to
+remove the y from the stack 
+
+now it remembers the value of x prior to the call to methodB so here we can print the x and see its value 
+prior to the call of methodB this is the reason why we have this stack over here 
+
+by the way the stack is called a call stack it remebers the value of arguments inbetween method calls 
+
+now we can use a similar technique for the iterative traversal algorithm
+
+intially we want to validate the root node make sure we have it in the graph
+then we are going to push the root node into the stack 
+while the stack is not empty we are going to pop it and store the variable called current 
+
+now everytime we reach a node  we should visit and print it on the terminal
+and then we should visit all its unvisited neighbors 
+
+so visit the current  and then push each unvisited neighbor into the stack
+this will bring us to the beginning of the while loop

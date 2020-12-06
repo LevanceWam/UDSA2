@@ -1,0 +1,84 @@
+this is the notes for TraversalAlgorithms
+
+Earlier in the course we were talking about tree traversals 
+we learned that there were 2 types of traversals;
+Depth-first 
+breadth-first
+
+remember that a tree is a kind of graph
+so the traversal algorithms we learned before can be applied to graphs
+but with a slight difference 
+
+when we traverse trees we start from the root 
+every tree has a root node and every node is reachable from that root node 
+so when we traverse a tree we will visit every node 
+
+But in graphs we do not have a particular root node 
+so we can start traversing from any nodes
+and with this we 
+will only see the nodes that are reachable from that node.
+not all nodes in the graph
+
+a real world example would be finding people that are directly or indirectly 
+connected to a person 
+
+taking a look at the screenshot we can see that john is connected to bob but 
+bob is connnected to no one
+so if we start to traverse from bob we are going to only end up with just bob
+
+Lets take a look at Depth-first and breadth-first traversals using a graph
+
+We want to do a depth first traversal on this graph (look at depth screenshot)
+with this algorithm we start from a node and recursively visit all of its 
+neighbors going really deep into the graph
+we can do this with recursion and iteration
+
+so lets look at how this algorithm works 
+we start with A and look at the neighbors B and E
+we will assume that B was entered first
+then we go down the path with B and look at it's neighbors C and D
+again assuming c was next we go there and we see it has a single neighbor
+D but D doesn't have a neighbor so the recursion stops here
+so now we are really deep into the graph
+
+now we go back to C and it doesn't have any other neighbors so we go back to the B
+since we already visited C now we can take a look at the other direction
+but the problem is we already visited the D node and we do not want to do this again
+so we are done with B so we go back to A look at the other neighbor and the traversal ends here 
+
+now what if we started at the B ?
+well we would visit B then go to C and then goto D 
+that would be the end of the recursion
+this is because we do not have a path back to the other nodes
+
+this is the difference between traversing graphs and trees 
+
+Now lets take a look at breadth-first traversal algorithm
+with this algorithm instead of going deep into the graph 
+we visit a node and all of its neighbors  before going farther from the node 
+
+we implement this using a queue so we have a empty queue and we start our traversal from
+the A 
+
+we add the A to the queue first and this means this is the node that we are going to visit next 
+as we visit nodes we add their neighbors to the queue as long as the queue is not 
+empty we are going to continue the traversal 
+
+so we start by removing the item in the front of the queue and visited 
+Which was A now we add the neighbors of A to the queue so they will be processed
+next lets say the B was inserted first so we add the B followed by the E to the queue
+
+now we remove the B from the queue and process it so we visited it and processed its neighbors to
+the queue C and D 
+
+next we are going to process the E but this node doesn't have any neighbors so we're not 
+not going to add anything to the queue 
+
+Now we take out the C we visited and add its neighbor to the the queue
+next we remove the D and visit it. This node doesnt have any neighbors 
+so we take out another item from the queue
+
+since it is D again we are going to ignore it 
+the queue is now empty and the traversal is complete
+
+We are going to do some exercises to make sure we understand the 2 algorithms

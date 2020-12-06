@@ -1,0 +1,22 @@
+This is the notes for ExerciseDepthFirstTraversal(Recursive)
+
+we are going to implement the depth-first traversal of on the following 
+graph(screenshot in folder) the implementation
+is vert similar to what we had to do in the binary tree section
+
+because remember a tree is a special kind of graph
+
+so what we are going to need is a recursive method that takes a node obj 
+visit that node and all of its neighbors recursively 
+
+we want to make sure that we don't visit the same node twice 
+beacuse in graphs it is possible to get the same node from a different 
+different paths 
+
+this didn't happen in trees so we didn't have to worry about this before 
+so we have to handle this scenario
+
+the best ideal data structure to handle this would be to use a set
+because we are only dealing with the keys/values 
+it allows us to look up an item in constant time and only stores the keys not the values
+and it won't save the same key twice 
