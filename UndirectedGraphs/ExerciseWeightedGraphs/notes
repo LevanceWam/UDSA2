@@ -38,6 +38,6 @@ WeightedGraph:
         To
         Weight
     AddNode()
-    AddEdhe(from,to,weight)
+    AddEdge(from,to,weight)
 
-    
+
