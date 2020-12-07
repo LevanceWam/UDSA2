@@ -1,0 +1,43 @@
+This is the notes for ExerciseWeightedGraphs
+
+Earlier in the last section we talked about weighted graphs 
+if the edges of our graph have weights we say we have a
+weighted graph 
+
+These weights can represent factors such as cost, distance, complexitym literally anything 
+A common application of a weighted graph is in finding the shortest path between 2 nodes 
+
+in the screenshot we took.
+The nodes represent different areas in a city and the weights in the edges represent the distance or 
+traffic conditions between the areas later on we are going to 
+look at the algorithm to find the shortest path
+
+between 2 nodes but before we do that we are going to implement a weighted graph
+
+so we are going to create a new class called weighted graph 
+we need a private node class like before
+
+but this time we are going to need a edge class this 
+class will represent the edge between 2 nodes so we are going to need 3 fields 
+from and to which both should be node objects
+and the weight is going to be an integer
+
+for now we are going to implement 2 operations in the weighted graph class
+add node and add edge
+remember add edge needs 3 parameter
+
+we also need to make this graph a undirected graph
+
+In undirected graphs our edges do not have a direction 
+so if there is a connection between A and B the same should be for B and A with the same weight 
+
+WeightedGraph:
+    Node
+    Edge:
+        From
+        To
+        Weight
+    AddNode()
+    AddEdhe(from,to,weight)
+
+    
