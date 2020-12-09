@@ -1,6 +1,15 @@
 class GraphNode{
     constructor(label){
         this.label = label
+        this.edges = [];
+    }
+
+    addEdge(to, weight){
+        this.edges.push(new Edge(this,to,weight))
+    }
+
+    getEdges(){
+        return this.edges;
     }
 
     toString(){
@@ -15,21 +24,17 @@ class Edge{
     }
 
     toString(){
-        return this.to.label;
+        return this.from.label + ' -> ' + this.to.label;
     }
 }
 
 class WeightGraph {
     constructor(){
         this.map = new Map();
-        this.adjacencyList = new Map()
     }
 
     addNode(label){
-        let newNode = new GraphNode(label);
-
-        if(!this.map.has(label)) this.map.set(label, newNode);
-        if(!this.adjacencyList.has(label)) this.adjacencyList.set(newNode, []);
+        if(!this.map.has(label)) this.map.set(label, new GraphNode(label));
     }
 
     addEdge(from, to, weight){
@@ -39,8 +44,8 @@ class WeightGraph {
         if (fromNode == null || toNode == null) throw new Error('This starting node does not exist.');
 
         // Making the connection on both nodes 
-        this.adjacencyList.get(fromNode).push(new Edge(fromNode, toNode, weight));
-        this.adjacencyList.get(toNode).push(new Edge(toNode, fromNode, weight));
+        fromNode.addEdge(toNode, weight);
+        toNode.addEdge(fromNode, weight);
     }
 
     print(){
@@ -48,14 +53,16 @@ class WeightGraph {
          * We need a simple and clean way to show to the connected nodes 
          * so we are going to loop over the adjencylist keys and print out all of their connections
          */
-        for(let source of this.adjacencyList.keys()){
+        for(let node of this.map.values()){
+
+            // console.log('node from for loop: ', node)
             // this returns the array that is stored in the adjencylist
-            let targets = this.adjacencyList.get(source);
+            let edges = node.getEdges();
 
             // next we check so see if the array length is 0 if it is not then we are going to 
             // print the key and the array with all of the nodes that it is connected too
-            if(!targets.length == 0){
-                console.log(source + ' is connected to '+ targets);
+            if(!edges.length == 0){
+                console.log(node + ' is connected to '+ edges);
             }
         }
     }
