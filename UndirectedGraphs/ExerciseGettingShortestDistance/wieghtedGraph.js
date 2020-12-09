@@ -1,4 +1,6 @@
 const PriorityQueue = require('./priorityQueue');
+const Stack = require('./stack');
+const buildPath = Symbol();
 
 class GraphNode{
     constructor(label){
@@ -34,6 +36,20 @@ class NodeEntry {
         this.node = node;
         this.priority = priority;
     }
+}
+class Path{
+    constructor(){
+        this.nodes =[];
+    }
+
+    add(node){
+        this.nodes.push(node);
+    }
+
+    toString(){
+        return this.nodes.toString();
+    }
+
 }
 
 class WeightGraph {
@@ -75,8 +91,14 @@ class WeightGraph {
         }
     }
 
-    getShortestDistance (from, to){
-        let fromNode = this.map.get(from)
+    getShortestPath(from, to){
+        let fromNode = this.map.get(from);
+        let toNode = this.map.get(to);
+
+
+        if (fromNode == null ) throw new Error('This starting node does not exist.');
+        if (toNode == null) throw new Error('The node you are trying to connect to does not exist.');
+
         const distance = new Map();
 
         for (let node of this.map.values()){
@@ -84,6 +106,8 @@ class WeightGraph {
         }
         //setting the distance from the starting node to itself 
         distance.set(fromNode, 0);
+
+        let previousNodes = new Map();
 
         //keeping track of visited node.
         const visited = new Set();
@@ -101,12 +125,31 @@ class WeightGraph {
                 let newDistance = distance.get(current) + edge.weight;
                 if (newDistance < distance.get(edge.to)) {
                     distance.set(edge.to, newDistance);
+                    previousNodes.set(edge.to, current);
                     pq.add(new NodeEntry(edge.to, newDistance));
                 }
             }
         }
 
-        return distance.get(this.map.get(to));
+        return this[buildPath](previousNodes, toNode);
+    }
+
+    [buildPath](previousNodes, toNode){
+        const stack = new Stack();
+        stack.push(toNode);
+        let previous = previousNodes.get(toNode);
+
+        while (previous != null){
+            stack.push(previous);
+            previous = previousNodes.get(previous);
+        }
+
+        let path = new Path();
+        while(!stack.isEmpty()){
+            path.add(stack.pop().label)
+        }
+        
+        return path;
     }
 }
 
@@ -117,7 +160,8 @@ graph.addNode('b');
 graph.addNode('c');
 
 graph.addEdge('a', 'b', 1);
-graph.addEdge('a', 'c', 2);
+graph.addEdge('a', 'c', 10);
+graph.addEdge('b', 'c', 2);
 
-let result = graph.getShortestDistance('b', 'c');
+let result = graph.getShortestPath('a', 'k');
 console.log(result);
