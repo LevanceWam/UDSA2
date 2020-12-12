@@ -1,0 +1,52 @@
+this is the notes for ExercisePrimAlgoritm
+
+We are now going to take a look at prims algorithm 
+which is one of the popular algorithms for finding
+the  minimum spanning tree of a graph
+
+we start off by selecting a mode it can be any node in the graph
+so we are going to start at A now we look at its edges 
+and pick the on with the minimum weight 
+
+A has 2 edges the edge with the minimum weight is the one from A to C 
+so we add this edge and it's target node to our tree 
+Then we go to C now our tree has 2 nodes A and C 
+
+Now we should extend this tree ans add another node but which node should we go for 
+we have to look at all of the edges connected to the exisiting nodes
+and pick the one with the minimum weight 
+
+we have between A,B C,B and C,D 
+we are not considering the B, D edge because it is not connected to the nodes of our tree 
+at each step we want to maintain a tree we want to make sure all nodes are connected so out of all these edges 
+the smallest is from C to B 
+
+so we add the edge and the target node to our tree
+again we have to look at the edges connected  to all the nodes of our tree
+we have 3 edges to pick from 
+
+the smallest is from B to A but we alreadt visited A so w are not interested in this 
+so the next smallest is B to D 
+
+we have not visited D yet so lets add this edge and target node to the tree
+Now we visited all of the nodes and we have a minimum spanning tree 
+
+so the idea of prims algorithm  is to extend the tree by adding the smallest connected edge. this is another example of a
+greedy algorithm
+
+Okay lets talk about implementation;
+at each step we want to pick the edge with the minimum weight out of the edges connected to the exisiting nodes 
+How do we accomplish this?
+
+well everytime we visit a node we add edges to unvisited neighbors to a list or
+pull up available edgs these are the edges that are connected to our tree 
+
+now this list we want to pick the edge with the minimum weight 
+what is the ideal data structure for this?
+A priority Queue 
+
+with a PQ we can pick the minimum weight edge in constant teim we are going to 
+repeat this until we have added all the nodes in the graph for the spanning tree
+
+now how are we going to represent the spanning tree we can use the weighted  graph class so
+we don't have to create a new one because a tree is essentially a graph
