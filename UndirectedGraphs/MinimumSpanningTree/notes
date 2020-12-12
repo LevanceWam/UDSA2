@@ -1,0 +1,30 @@
+This is the notes for MinimumSpanningTree
+
+Another topic that comes up in interviews 
+is the MinimumSpanningTree of graph so lets 
+say that the nodes of these graphs are our offices and
+the edges represent the connection between these offices 
+
+now to connect these offices we need to put literal cable between them 
+the more cables we need the more we have to pay 
+what is the best way to find the minimum cost of doing this 
+it does not matter if it is directly connected or undirectly connected
+
+so we decided to remove the connection from A to C but this is unnessarary 
+because A is connected to C through b
+we can aslo remove the edge from B to D 
+
+what we have left if the tree is called a spanning tree
+we have converted the graph to a tree
+as we learned earlier a tree is a graph with out a cycle 
+
+spanning tree is not unqiue we can create this tree in many ways 
+so if we revert back to the old graph we can remove different edges
+and all the nodes are all connected we have a spanning tree 
+
+basically if we have end nodes in a graph 
+the spanning tree should have exactly N - 1 to equal the amount of edges 
+
+each spanning tree has a cost and that is the sum of the weight of the trees edges 
+there is a algorithm that is used to find the minimum costing spanning tree we are going to 
+take a look at this in the next lecture 
