@@ -1,0 +1,47 @@
+This is the notes for DijkstrasShortestPathAlgorithm
+
+Dijkstras algorithm is one of the classic algorithms for finding the shortest path 
+between 2 nodes of a graph.
+
+It was developed by dutch computer scientist called Dijkstra
+
+we have a screenshot of a simple graph and we want to find the shortest path between
+A and E. With this algorithm we're going to generate a table of information
+in this table we can see the shortest distance from A  to every other node
+
+Intially we are going to assume that from A to A is 0 and the distance from A to the other
+Nodes are unknown so we set them to a large value 
+
+As we navigate through the graph if we find the shorter pathwe will update the table 
+
+So we are going to start from A then we are going to look at the unvisited neighbors of the current node so the unvisited neighbors 
+A's unvisited neighbors are B, C, D now we calculate the distance from the starting node to 
+each of these neighbors 
+
+in this case the start node and the Root node is the A in this situation
+so what is the distance between A and B it is 3
+
+compare this with the known distance to B 
+which is the default value we had in the table so now we are going to 
+change that to 3 since we found the shorter distance 
+we also need to record that we got to B from A we are going to need this later when we 
+construct the full path between the nodes 
+Basically every time we find the shorter path we need to 
+record where we came from
+
+So we are going to repeat this step for the other neighbors of A and we record the distance 
+Now we have to choose the direction that is the shortest to go to next
+which is D so we visit it next 
+
+now we do the previous steps for D we look at its unvisited neighbors for the D node 
+and calculate the shortest distance from the start node
+
+we repeated this until we go to theE node and found that A to B to E was the shortest path
+this is Dijkstras algorithm
+
+this algorithm is an example of what we call a greedy algorithm
+this algorithm tries to find the optimal solution to a problem by making
+optimal choices at each step
+
+for this example at each step we tried to find the shortest path between the current node and its
+its direct neighbors this is a greedy algorithm

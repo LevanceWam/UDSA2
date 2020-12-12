@@ -1,0 +1,26 @@
+This is the notes for ExerciseGettingShortestDistance
+
+to implement the dijkstra algorithm we need to perform a breadth first traversal in the graph
+we need to use a queue to implement this. Just like when we did the breadth search algorithm
+
+However the order of nodes we visit is a bit different in this algorithm in the breadth first search the 
+order didn't matter but now as we're done visiting a node we want to
+go to its neighbor that is the closest to the start node. 
+
+Okay so here we need to use a priorty queue instead of a regular queue 
+
+remember priorty queues moves items to the front of the queue based on the priority
+
+so when we are examining a neighbor if we find the shorter path to the neighbor 
+we are going to update the distances table and push a new item into the priorty queue 
+so the priorty of this item is going to be equal to the new disrance we have calculated so
+if a neighbor is closer to the starting node it'll be moved to the beginning of the queue 
+
+for this exercise we are going to use the priorty queue that we made
+
+for this algorithm we are going to need to create this table (look at the screenshot)
+basically we are going to need 2 hashtables  in both of these tables the 
+keys are the node object our values are different
+in the first hashtable our values are intergers we can calls this table distances
+the second hash table our value are node objects so we map a node to another node the previous node that 
+we came from 

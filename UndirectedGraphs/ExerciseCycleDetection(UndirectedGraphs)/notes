@@ -1,0 +1,37 @@
+This is the notes for ExerciseCycleDetection(UndirectedGraphs)
+
+in the previous section we talked about finding cycles in a directed graph
+the algorithm we talked about there does not work for an undirected graph
+
+This is the reason why so if we have a simple undirected graph without a cycle 
+if we run the previous algorithm we will put a and b in the visiting set (sc1)
+but because there is an edge from b to a and a is still in the visiting set 
+our algorithm will think there is a cycle in this graph
+
+so we detect a cycle between every 2 nodes connected by an edge
+so we are going to need a new algorithm 
+we are still going to use depth first search  but
+as we are navigating through the graph we should pass the parent of each node to its neighbors to prevent 
+going back to the parent
+
+so we add another edge to the a and c to create a cycle 
+we start the depth first search from any node lets say a
+we put ain the set of visited nodes now we should explore the neighbors of a
+we can go to b or c the order doesn't matter 
+
+but we are going to b now be has 2 neighbors A and C 
+we are not going to want to go back where wwe came from which is A
+so as we move from A to b we should pass A as the previous or parent node 
+
+as we explore the neighbors of B we know that we came from A so we are not going to 
+go in this direction instead we are going to C similarly we pass B down so we don't want to back to it from C 
+now C has one other neighbor but we already visited A 
+this means we have a cycle in the graph
+
+Now in this example we started from A and all these nodes are connected 
+but what of we has a complex graph and some nodes are not reachable from a
+
+well this is how we can solve this:
+we need to start our search from every unvisited node in the graph 
+so we are going to need a for loop to iterate over all of the nodes in the graph 
+if a node is not visited we start a depth seaech on that node 

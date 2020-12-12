@@ -10,6 +10,7 @@
 <li><a href='#section3'>Heaps</a></li>
 <li><a href='#section4'>Tries</a></li>
 <li><a href='#section5'>Graphs</a></li>
+<li><a href='#section6'>Undirected Graphs</a></li>
 
 <h2 id=section1>Binary Trees</h2>
 
@@ -139,3 +140,5 @@ we would have to go through every word and check to see if thr word starts with 
 <p>We aslo have 2 ways to traverse a list Depth-first search (DFS) and breath-first search (BFS). With these algorithms we can find the nodes that are reachable from a given node.</p>
 
 <a href="#home">Top</a>
+
+<h2 id=section6>Undirected Graphs</h2>
